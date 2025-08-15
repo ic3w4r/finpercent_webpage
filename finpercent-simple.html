@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finpercent - Simple Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">Finpercent</div>
+            <div class="space-x-4">
+                <a href="#home" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-blue-600">About</a>
+                <a href="#services" class="text-gray-700 hover:text-blue-600">Services</a>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6">
+                Smart <span class="text-blue-600">Financial</span> Solutions
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Transform your financial journey with Finpercent's innovative tools and strategies.
+            </p>
+            
+            <!-- Counter Stats -->
+            <div class="grid grid-cols-3 gap-6 max-w-2xl mx-auto" x-data="{ users: '50K+', assets: '₹100Cr+', rating: '4.9/5' }">
+                <div class="glass p-6 rounded-2xl">
+                    <div class="text-3xl font-bold text-blue-600" x-text="users">50K+</div>
+                    <p class="text-gray-600">Active Users</p>
+                </div>
+                <div class="glass p-6 rounded-2xl">
+                    <div class="text-3xl font-bold text-green-600" x-text="assets">₹100Cr+</div>
+                    <p class="text-gray-600">Assets Managed</p>
+                </div>
+                <div class="glass p-6 rounded-2xl">
+                    <div class="text-3xl font-bold text-purple-600" x-text="rating">4.9/5</div>
+                    <p class="text-gray-600">User Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Our Services</h2>
+            
+            <!-- Service Tabs -->
+            <div x-data="{ activeTab: 'stop' }" class="max-w-4xl mx-auto">
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button @click="activeTab = 'stop'" 
+                            :class="activeTab === 'stop' ? 'bg-blue-500 text-white' : 'bg-white text-gray-700'"
+                            class="px-6 py-3 rounded-lg font-semibold transition-all">
+                        S.T.O.P Strategy
+                    </button>
+                    <button @click="activeTab = 'investment'" 
+                            :class="activeTab === 'investment' ? 'bg-blue-500 text-white' : 'bg-white text-gray-700'"
+                            class="px-6 py-3 rounded-lg font-semibold transition-all">
+                        Investment Pooling
+                    </button>
+                    <button @click="activeTab = 'velocity'" 
+                            :class="activeTab === 'velocity' ? 'bg-blue-500 text-white' : 'bg-white text-gray-700'"
+                            class="px-6 py-3 rounded-lg font-semibold transition-all">
+                        Velocity Banking
+                    </button>
+                </div>
+                
+                <div class="glass p-8 rounded-2xl">
+                    <div x-show="activeTab === 'stop'" x-transition>
+                        <h3 class="text-2xl font-bold mb-4">S.T.O.P Strategy</h3>
+                        <p class="text-gray-600">Strategic Tax Optimization Program for maximum savings.</p>
+                    </div>
+                    <div x-show="activeTab === 'investment'" x-transition>
+                        <h3 class="text-2xl font-bold mb-4">Investment Pooling</h3>
+                        <p class="text-gray-600">Collaborative investment opportunities for better returns.</p>
+                    </div>
+                    <div x-show="activeTab === 'velocity'" x-transition>
+                        <h3 class="text-2xl font-bold mb-4">Velocity Banking</h3>
+                        <p class="text-gray-600">Accelerated debt payoff and wealth building strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Get In Touch</h2>
+                <form class="glass p-8 rounded-2xl space-y-6" x-data="{ submitted: false }" @submit.prevent="submitted = true">
+                    <div>
+                        <input type="text" placeholder="Your Name" required
+                               class="w-full p-4 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none transition-all">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Your Email" required
+                               class="w-full p-4 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none transition-all">
+                    </div>
+                    <div>
+                        <textarea placeholder="Your Message" rows="4" required
+                                  class="w-full p-4 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none transition-all"></textarea>
+                    </div>
+                    <button type="submit" 
+                            class="w-full bg-blue-500 text-white py-4 rounded-lg font-semibold hover:bg-blue-600 transition-all">
+                        Send Message
+                    </button>
+                    <div x-show="submitted" x-transition class="text-green-600 text-center">
+                        Thank you! Your message has been sent.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-2xl font-bold mb-4">Finpercent</div>
+            <p class="text-gray-400">Smart Financial Solutions for Growth</p>
+        </div>
+    </footer>
+</body>
+</html>
