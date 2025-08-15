@@ -1,0 +1,651 @@
+<!-- Interactive Testimonials Carousel -->
+    <section id="testimonials" class="py-20 bg-gradient-to-b from-blue-50/50 to-white relative">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center max-w-4xl mx-auto mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    Success <span class="gradient-text">Stories</span>
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Hear from businesses and individuals who have transformed their financial journey with Finpercent
+                </p>
+            </div>
+
+            <!-- Interactive Testimonials -->
+            <div x-data="{
+                currentTestimonial: 0,
+                autoPlay: true,
+                testimonials: [
+                    {
+                        name: 'Rahul Sharma',
+                        role: 'Small Business Owner',
+                        location: 'Delhi',
+                        image: 'RS',
+                        rating: 5,
+                        content: 'Finpercent\'s S.T.O.P strategy helped me optimize my business operations and increase profitability by 40% in just 6 months. Their support team is exceptional!',
+                        metric: '40% increase',
+                        metricLabel: 'in profitability',
+                        color: 'from-blue-500 to-purple-600'
+                    },
+                    {
+                        name: 'Priya Mehta',
+                        role: 'Startup Founder',
+                        location: 'Mumbai', 
+                        image: 'PM',
+                        rating: 5,
+                        content: 'The investment pooling feature allowed us to access opportunities we never could before. Our returns have grown significantly since joining Finpercent.',
+                        metric: '300% growth',
+                        metricLabel: 'in returns',
+                        color: 'from-green-500 to-blue-600'
+                    },
+                    {
+                        name: 'Amit Kumar',
+                        role: 'E-commerce Owner',
+                        location: 'Bangalore',
+                        image: 'AK',
+                        rating: 5,
+                        content: 'The live-stream product showcases have transformed how we learn about financial products. Finpercent\'s platform is truly revolutionary!',
+                        metric: '50% faster',
+                        metricLabel: 'decision making',
+                        color: 'from-purple-500 to-pink-600'
+                    },
+                    {
+                        name: 'Sneha Patel',
+                        role: 'Manufacturing Unit',
+                        location: 'Ahmedabad',
+                        image: 'SP',
+                        rating: 5,
+                        content: 'Velocity banking solutions have streamlined our cash flow management completely. We now have better control over our finances than ever before.',
+                        metric: '60% better',
+                        metricLabel: 'cash flow control',
+                        color: 'from-orange-500 to-red-600'
+                    }
+                ]
+            }" x-init="
+                if (autoPlay) {
+                    setInterval(() => {
+                        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                    }, 5000);
+                }
+            " class="max-w-6xl mx-auto">
+                
+                <!-- Main Testimonial Display -->
+                <div class="glass rounded-3xl p-8 md:p-12 mb-8 relative overflow-hidden">
+                    <template x-for="(testimonial, index) in testimonials" :key="index">
+                        <div x-show="currentTestimonial === index"
+                             x-transition:enter="transition ease-out duration-500"
+                             x-transition:enter-start="opacity-0 transform translate-x-10"
+                             x-transition:enter-end="opacity-100 transform translate-x-0"
+                             x-transition:leave="transition ease-in duration-300"
+                             x-transition:leave-start="opacity-100 transform translate-x-0"
+                             x-transition:leave-end="opacity-0 transform -translate-x-10">
+                            
+                            <div class="flex flex-col lg:flex-row items-center">
+                                <!-- Avatar and Info -->
+                                <div class="lg:w-1/3 text-center lg:text-left mb-8 lg:mb-0">
+                                    <div class="relative inline-block">
+                                        <div class="w-24 h-24 rounded-3xl bg-gradient-to-r flex items-center justify-center text-2xl font-bold text-white mb-4 mx-auto lg:mx-0 hover-lift"
+                                             :class="testimonial.color">
+                                            <span x-text="testimonial.image"></span>
+                                        </div>
+                                        
+                                        <!-- Verified Badge -->
+                                        <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-check text-white text-sm"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <h4 class="text-xl font-bold text-gray-900 mb-1" x-text="testimonial.name"></h4>
+                                    <p class="text-gray-600 mb-1" x-text="testimonial.role"></p>
+                                    <p class="text-sm text-gray-500 mb-4" x-text="testimonial.location"></p>
+                                    
+                                    <!-- Rating Stars -->
+                                    <div class="flex justify-center lg:justify-start space-x-1 mb-4">
+                                        <template x-for="star in 5" :key="star">
+                                            <i class="fas fa-star text-yellow-400 text-sm"
+                                               :class="star <= testimonial.rating ? 'text-yellow-400' : 'text-gray-300'"></i>
+                                        </template>
+                                    </div>
+                                    
+                                    <!-- Metric -->
+                                    <div class="glass p-4 rounded-2xl">
+                                        <div class="text-2xl font-bold text-blue-600" x-text="testimonial.metric"></div>
+                                        <div class="text-sm text-gray-600" x-text="testimonial.metricLabel"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Testimonial Content -->
+                                <div class="lg:w-2/3 lg:ml-12">
+                                    <div class="relative">
+                                        <div class="text-6xl text-blue-100 absolute -top-4 -left-4">
+                                            <i class="fas fa-quote-left"></i>
+                                        </div>
+                                        <p class="text-xl text-gray-700 leading-relaxed relative z-10 mb-6" x-text="testimonial.content"></p>
+                                        
+                                        <!-- Trust Indicators -->
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                                                Verified Customer
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-clock text-blue-500 mr-2"></i>
+                                                2 months ago
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                
+                <!-- Navigation Dots -->
+                <div class="flex justify-center space-x-3 mb-8">
+                    <template x-for="(testimonial, index) in testimonials" :key="index">
+                        <button @click="currentTestimonial = index; autoPlay = false"
+                                class="w-3 h-3 rounded-full transition-all duration-300"
+                                :class="currentTestimonial === index ? 
+                                    'bg-gradient-to-r from-blue-500 to-purple-600 w-8' : 
+                                    'bg-gray-300 hover:bg-gray-400'">
+                        </button>
+                    </template>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="glass p-6 rounded-2xl text-center hover-lift" 
+                         x-data="{ count: 0 }" 
+                         x-intersect="
+                             const animate = () => {
+                                 if (count < 50) {
+                                     count++;
+                                     requestAnimationFrame(animate);
+                                 }
+                             };
+                             animate();
+                         ">
+                        <div class="text-3xl font-bold text-blue-600 mb-2">
+                            <span x-text="count"></span>K+
+                        </div>
+                        <p class="text-gray-600">Active Users</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl text-center hover-lift"
+                         x-data="{ count: 0 }" 
+                         x-intersect="
+                             const animate = () => {
+                                 if (count < 100) {
+                                     count++;
+                                     requestAnimationFrame(animate);
+                                 }
+                             };
+                             animate();
+                         ">
+                        <div class="text-3xl font-bold text-green-600 mb-2">
+                            ₹<span x-text="count"></span>Cr+
+                        </div>
+                        <p class="text-gray-600">Assets Managed</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl text-center hover-lift">
+                        <div class="text-3xl font-bold text-purple-600 mb-2">4.9/5</div>
+                        <p class="text-gray-600">User Rating</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl text-center hover-lift">
+                        <div class="text-3xl font-bold text-orange-600 mb-2">24/7</div>
+                        <p class="text-gray-600">Expert Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                        Get in <span class="gradient-text">Touch</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Have questions about how Finpercent can help your business grow? Our team is here to help you navigate your financial journey.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Interactive Contact Form -->
+                    <div x-data="{
+                        form: {
+                            name: '',
+                            email: '',
+                            business: '',
+                            message: ''
+                        },
+                        errors: {},
+                        loading: false,
+                        success: false,
+                        
+                        validateField(field) {
+                            this.errors[field] = '';
+                            if (!this.form[field]) {
+                                this.errors[field] = 'This field is required';
+                                return false;
+                            }
+                            if (field === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form[field])) {
+                                this.errors[field] = 'Please enter a valid email';
+                                return false;
+                            }
+                            return true;
+                        },
+                        
+                        submitForm() {
+                            this.loading = true;
+                            this.errors = {};
+                            
+                            // Validate all fields
+                            let isValid = true;
+                            ['name', 'email', 'business', 'message'].forEach(field => {
+                                if (!this.validateField(field)) isValid = false;
+                            });
+                            
+                            if (isValid) {
+                                // Simulate API call
+                                setTimeout(() => {
+                                    this.loading = false;
+                                    this.success = true;
+                                    this.form = { name: '', email: '', business: '', message: '' };
+                                    setTimeout(() => this.success = false, 5000);
+                                }, 2000);
+                            } else {
+                                this.loading = false;
+                            }
+                        }
+                    }" class="glass rounded-3xl p-8">
+                        
+                        <!-- Success Message -->
+                        <div x-show="success" 
+                             x-transition:enter="transition ease-out duration-300"
+                             x-transition:enter-start="opacity-0 transform scale-95"
+                             x-transition:enter-end="opacity-100 transform scale-100"
+                             class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-6">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-green-800">Message Sent Successfully!</h4>
+                                    <p class="text-green-600 text-sm">We'll get back to you within 24 hours.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <form @submit.prevent="submitForm" class="space-y-6">
+                            <!-- Name Field -->
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input type="text" 
+                                       id="name" 
+                                       x-model="form.name"
+                                       @blur="validateField('name')"
+                                       class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
+                                       :class="errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-200' : ''"
+                                       placeholder="Enter your full name">
+                                <p x-show="errors.name" x-text="errors.name" class="text-red-500 text-sm mt-1"></p>
+                            </div>
+
+                            <!-- Email Field -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" 
+                                       id="email" 
+                                       x-model="form.email"
+                                       @blur="validateField('email')"
+                                       class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
+                                       :class="errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-200' : ''"
+                                       placeholder="Enter your email address">
+                                <p x-show="errors.email" x-text="errors.email" class="text-red-500 text-sm mt-1"></p>
+                            </div>
+
+                            <!-- Business Field -->
+                            <div>
+                                <label for="business" class="block text-sm font-medium text-gray-700 mb-2">Business Name</label>
+                                <input type="text" 
+                                       id="business" 
+                                       x-model="form.business"
+                                       @blur="validateField('business')"
+                                       class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
+                                       :class="errors.business ? 'border-red-500 focus:border-red-500 focus:ring-red-200' : ''"
+                                       placeholder="Enter your business name">
+                                <p x-show="errors.business" x-text="errors.business" class="text-red-500 text-sm mt-1"></p>
+                            </div>
+
+                            <!-- Message Field -->
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea id="message" 
+                                          x-model="form.message"
+                                          @blur="validateField('message')"
+                                          rows="5" 
+                                          class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 resize-none"
+                                          :class="errors.message ? 'border-red-500 focus:border-red-500 focus:ring-red-200' : ''"
+                                          placeholder="How can we help you?"></textarea>
+                                <p x-show="errors.message" x-text="errors.message" class="text-red-500 text-sm mt-1"></p>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" 
+                                    :disabled="loading"
+                                    class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:shadow-glow-blue transition-all duration-300 btn-ripple disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span x-show="!loading" class="flex items-center justify-center">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Send Message
+                                </span>
+                                <span x-show="loading" class="flex items-center justify-center">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>
+                                    Sending...
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info & Quick Actions -->
+                    <div class="space-y-8">
+                        <!-- Contact Information -->
+                        <div class="glass rounded-3xl p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start group hover-lift cursor-pointer">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-1">Office Address</h4>
+                                        <p class="text-gray-600">Finpercent Headquarters<br>Bangalore, India</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start group hover-lift cursor-pointer">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-envelope text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-1">Email</h4>
+                                        <p class="text-gray-600">support@finpercent.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start group hover-lift cursor-pointer">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-phone text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-1">Phone</h4>
+                                        <p class="text-gray-600">+91 (800) 123-4567</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Business Hours -->
+                        <div class="glass rounded-3xl p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Business Hours</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span class="text-gray-700">Monday - Friday</span>
+                                    <span class="text-gray-900 font-semibold">9:00 AM - 6:00 PM</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span class="text-gray-700">Saturday</span>
+                                    <span class="text-gray-900 font-semibold">10:00 AM - 2:00 PM</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2">
+                                    <span class="text-gray-700">Sunday</span>
+                                    <span class="text-red-600 font-semibold">Closed</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Action Buttons -->
+                        <div class="space-y-4">
+                            <button class="w-full glass p-4 rounded-2xl font-semibold text-blue-600 hover:bg-blue-50 transition-all duration-300 btn-ripple hover-lift">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                Chat on WhatsApp
+                            </button>
+                            <button class="w-full glass p-4 rounded-2xl font-semibold text-blue-600 hover:bg-blue-50 transition-all duration-300 btn-ripple hover-lift">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                Schedule a Call
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="relative bg-gray-900 text-white overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
+            <div class="absolute top-20 left-20 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-20 w-60 h-60 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative z-10">
+            <!-- Main Footer Content -->
+            <div class="container mx-auto px-4 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Company Info -->
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-chart-line text-white"></i>
+                            </div>
+                            <span class="text-2xl font-bold">Finpercent</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Empowering SMEs and individuals with innovative financial solutions for a better tomorrow.
+                        </p>
+                        
+                        <!-- Social Media -->
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 glass-dark rounded-xl flex items-center justify-center text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 glass-dark rounded-xl flex items-center justify-center text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 glass-dark rounded-xl flex items-center justify-center text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 glass-dark rounded-xl flex items-center justify-center text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">About Us</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">Our Services</a></li>
+                            <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">How It Works</a></li>
+                            <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">Reviews</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Services -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-6">Our Services</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">S.T.O.P Strategy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">Velocity Banking</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">Investment Pooling</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">Live Streaming</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform duration-300 inline-block">Financial Planning</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div x-data="{
+                        email: '',
+                        subscribed: false,
+                        subscribe() {
+                            if (this.email) {
+                                this.subscribed = true;
+                                this.email = '';
+                                setTimeout(() => this.subscribed = false, 3000);
+                            }
+                        }
+                    }">
+                        <h4 class="text-lg font-semibold mb-6">Stay Updated</h4>
+                        <p class="text-gray-400 mb-6">Subscribe to our newsletter for the latest updates and insights.</p>
+                        
+                        <!-- Success Message -->
+                        <div x-show="subscribed" 
+                             x-transition:enter="transition ease-out duration-300"
+                             x-transition:enter-start="opacity-0 transform scale-95"
+                             x-transition:enter-end="opacity-100 transform scale-100"
+                             class="bg-green-500/20 border border-green-500/30 rounded-xl p-4 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                <span class="text-green-400 text-sm">Successfully subscribed!</span>
+                            </div>
+                        </div>
+                        
+                        <form @submit.prevent="subscribe()" class="space-y-4">
+                            <input type="email" 
+                                   x-model="email"
+                                   placeholder="Enter your email" 
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:border-blue-500 text-white placeholder-gray-500 transition-all duration-300">
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-glow-blue transition-all duration-300 btn-ripple">
+                                <i class="fas fa-envelope mr-2"></i>
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800">
+                <div class="container mx-auto px-4 py-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="text-gray-400 mb-4 md:mb-0">
+                            © 2024 Finpercent. All rights reserved.
+                        </div>
+                        <div class="flex space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button x-data="{ show: false }" 
+            x-init="window.addEventListener('scroll', () => { show = window.scrollY > 500 })"
+            x-show="show"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform scale-75"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center hover:shadow-glow-blue transition-all duration-300 z-50 hover-lift">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Additional JavaScript for Enhanced Interactions -->
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-element');
+            const speed = 0.2;
+
+            parallax.forEach(element => {
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Enhanced form validation with real-time feedback
+        function enhanceFormValidation() {
+            const inputs = document.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.classList.add('ring-2', 'ring-blue-200');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.classList.remove('ring-2', 'ring-blue-200');
+                });
+            });
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', enhanceFormValidation);
+
+        // Add loading animation to buttons on click
+        document.querySelectorAll('.btn-ripple').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+
+    <style>
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>
