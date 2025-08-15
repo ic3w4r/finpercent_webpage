@@ -1,0 +1,1535 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="AI-generated website">
+      <meta name="theme-color" content="#ffffff">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="robots" content="index, follow">
+      
+      <!-- Performance optimization: Preload critical resources -->
+      <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" as="style">
+      
+      <!-- {headerScripts} -->
+
+      <!-- Core CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: {
+                  50: '#f0fdf4',
+                  100: '#dcfce7',
+                  200: '#bbf7d0',
+                  300: '#86efac',
+                  400: '#4ade80',
+                  500: '#22c55e',
+                  600: '#16a34a',
+                  700: '#15803d',
+                  800: '#166534',
+                  900: '#14532d',
+                  950: '#052e16',
+                },
+                secondary: {
+                  50: '#f8fafc',
+                  100: '#f1f5f9',
+                  200: '#e2e8f0',
+                  300: '#cbd5e1',
+                  400: '#94a3b8',
+                  500: '#64748b',
+                  600: '#475569',
+                  700: '#334155',
+                  800: '#1e293b',
+                  900: '#0f172a',
+                  950: '#020617',
+                },
+                accent: {
+                  50: '#f0fdfa',
+                  100: '#ccfbf1',
+                  200: '#99f6e4',
+                  300: '#5eead4',
+                  400: '#2dd4bf',
+                  500: '#14b8a6',
+                  600: '#0d9488',
+                  700: '#0f766e',
+                  800: '#115e59',
+                  900: '#134e4a',
+                  950: '#042f2e',
+                },
+              },
+              fontFamily: {
+                sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                heading: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
+              },
+              spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '30': '7.5rem',
+              },
+              maxWidth: {
+                '8xl': '88rem',
+                '9xl': '96rem',
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'fade-out': 'fadeOut 0.5s ease-out',
+                'slide-up': 'slideUp 0.5s ease-out',
+                'slide-down': 'slideDown 0.5s ease-out',
+                'slide-left': 'slideLeft 0.5s ease-out',
+                'slide-right': 'slideRight 0.5s ease-out',
+                'scale-in': 'scaleIn 0.5s ease-out',
+                'scale-out': 'scaleOut 0.5s ease-out',
+                'spin-slow': 'spin 3s linear infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'bounce-slow': 'bounce 3s infinite',
+                'float': 'float 3s ease-in-out infinite',
+                'wiggle': 'wiggle 1s ease-in-out infinite',
+                'tilt': 'tilt 10s infinite',
+                'wave': 'wave 2s ease-in-out infinite',
+                'zoom-in': 'zoomIn 0.5s ease-out',
+                'zoom-out': 'zoomOut 0.5s ease-out',
+                'rotate-3d': 'rotate3d 10s infinite linear',
+              },
+              keyframes: {
+                fadeIn: {
+                  '0%': { opacity: '0' },
+                  '100%': { opacity: '1' },
+                },
+                fadeOut: {
+                  '0%': { opacity: '1' },
+                  '100%': { opacity: '0' },
+                },
+                slideUp: {
+                  '0%': { transform: 'translateY(20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideDown: {
+                  '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideLeft: {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                slideRight: {
+                  '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                scaleIn: {
+                  '0%': { transform: 'scale(0.9)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                scaleOut: {
+                  '0%': { transform: 'scale(1.1)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                float: {
+                  '0%, 100%': { transform: 'translateY(0)' },
+                  '50%': { transform: 'translateY(-10px)' },
+                },
+              },
+              aspectRatio: {
+                'portrait': '3/4',
+                'landscape': '4/3',
+                'ultrawide': '21/9',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['disabled'],
+              cursor: ['disabled'],
+              backgroundColor: ['active', 'disabled'],
+              textColor: ['active', 'disabled'],
+            },
+          },
+        }
+      </script>
+
+      <!-- Utilities and Components -->
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
+      
+      <!-- Optimized Font Loading -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+      
+      <!-- Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <!-- Base Styles -->
+      <style>
+
+      * {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Webkit browsers like Chrome, Safari, newer Edge */
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 0px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: #666;
+        }
+
+        /* Remove tap highlight on mobile */
+        * {
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Improve text rendering */
+        body {
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Focus outline styles */
+        :focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+
+        /* Print styles */
+        @media print {
+          .no-print {
+            display: none !important;
+          }
+          
+          a[href]:after {
+            content: " (" attr(href) ")";
+          }
+        }
+      </style>
+
+      <!-- Enhanced Image Handler -->
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                  const tempImage = new Image();
+                  tempImage.onload = () => {
+                    img.src = img.dataset.src;
+                    img.classList.remove('opacity-0');
+                    img.classList.add('opacity-100');
+                  };
+                  tempImage.src = img.dataset.src;
+                  img.removeAttribute('data-src');
+                  observer.unobserve(img);
+                }
+              }
+            });
+          }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+          });
+
+          const loadImage = (img) => {
+            if ('loading' in HTMLImageElement.prototype) {
+              img.loading = 'lazy';
+            }
+            
+            img.classList.add('transition-opacity', 'duration-300', 'opacity-0');
+            
+            img.onerror = () => {
+              const width = img.getAttribute('width') || img.clientWidth || 300;
+              const height = img.getAttribute('height') || img.clientHeight || 200;
+              img.src = `https://placehold.co/${width}x${height}/DEDEDE/555555?text=Image+Unavailable`;
+              img.alt = 'Image unavailable';
+              img.classList.remove('opacity-0');
+              img.classList.add('opacity-100', 'error-image');
+            };
+
+            if (img.dataset.src) {
+              imageObserver.observe(img);
+            } else {
+              img.classList.remove('opacity-0');
+              img.classList.add('opacity-100');
+            }
+          };
+
+          document.querySelectorAll('img[data-src], img:not([data-src])').forEach(loadImage);
+
+          // Watch for dynamically added images
+          new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+              mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1) {
+                  if (node.tagName === 'IMG') {
+                    loadImage(node);
+                  }
+                  node.querySelectorAll('img').forEach(loadImage);
+                }
+              });
+            });
+          }).observe(document.body, {
+            childList: true,
+            subtree: true
+          });
+        });
+
+        // Performance monitoring
+        if ('performance' in window && 'PerformanceObserver' in window) {
+          // Create performance observer
+          const observer = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            entries.forEach((entry) => {
+              if (entry.entryType === 'largest-contentful-paint') {
+                // console.log(`LCP: ${entry.startTime}ms`);
+              }
+              if (entry.entryType === 'first-input') {
+                // console.log(`FID: ${entry.processingStart - entry.startTime}ms`);
+              }
+              if (entry.entryType === 'layout-shift') {
+                // console.log(`CLS: ${entry.value}`);
+              }
+            });
+          });
+
+          // Observe performance metrics
+          observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
+
+          // Log basic performance metrics
+          window.addEventListener('load', () => {
+            const timing = performance.getEntriesByType('navigation')[0];
+            console.log({
+              'DNS Lookup': timing.domainLookupEnd - timing.domainLookupStart,
+              'TCP Connection': timing.connectEnd - timing.connectStart,
+              'DOM Content Loaded': timing.domContentLoadedEventEnd - timing.navigationStart,
+              'Page Load': timing.loadEventEnd - timing.navigationStart
+            });
+          });
+        }
+
+        // Handle offline/online status
+        window.addEventListener('online', () => {
+          document.body.classList.remove('offline');
+          console.log('Connection restored');
+        });
+        
+        window.addEventListener('offline', () => {
+          document.body.classList.add('offline');
+          console.log('Connection lost');
+        });
+      </script>
+   </head>
+   <body class="antialiased text-gray-800 min-h-screen flex flex-col">
+      <!-- Skip to main content link for accessibility -->
+      <a href="#main-content" 
+         class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-black">
+         Skip to main content
+      </a>
+
+      <!-- Header -->
+      <header class="relative z-50 bg-white dark:bg-gray-900">
+        <!-- Header content goes here -->
+      </header>
+
+      <!-- Main content area -->
+      <main id="main-content" class="flex-1 relative ">
+        <!-- Content will be injected here -->
+      </main>
+
+      <!-- {bodyScripts} -->
+
+   </body>
+</html><element id="ea331807-8542-4900-95e2-a3ce503ba568" data-section-id="ea331807-8542-4900-95e2-a3ce503ba568">
+
+<htmlCode>
+<div id="root">
+  <section id="Navbar" class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
+    <nav class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="#" class="flex items-center">
+            <span class="text-2xl font-bold text-blue-600">Finpercent</span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a>
+          <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">About Us</a>
+          <a href="#services" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a>
+          <a href="#how-it-works" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">How It Works</a>
+          <a href="#blog" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Blog</a>
+          <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
+            <a href="#get-started" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Mobile Navigation Button -->
+        <div class="md:hidden">
+          <button 
+            type="button" 
+            class="text-gray-700 hover:text-blue-600 focus:outline-none"
+            x-data="{ open: false }"
+            @click="open = !open"
+            aria-label="Toggle menu">
+            <svg class="h-6 w-6" x-show="!open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg class="h-6 w-6" x-show="open" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Menu -->
+      <div class="md:hidden" x-data="{ open: false }" x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" style="display: none;">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="#" class="block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50">Home</a>
+          <a href="#about" class="block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50">About Us</a>
+          <a href="#services" class="block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50">Services</a>
+          <a href="#how-it-works" class="block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50">How It Works</a>
+          <a href="#blog" class="block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50">Blog</a>
+          <a href="#contact" class="block px-3 py-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contact</a>
+          <a href="#get-started" class="block px-3 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 text-center">Get Started</a>
+        </div>
+      </div>
+    </nav>
+  </section>
+</div>
+</htmlCode></element><element id="fffb3028-ea26-4338-b3bd-5c1b6f687f0b" data-section-id="fffb3028-ea26-4338-b3bd-5c1b6f687f0b">
+
+<htmlCode>
+<div id="root">
+  <section id="Hero" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-beige-100 via-beige-50 to-green-100">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center">
+        <!-- Left Content -->
+        <div class="w-full md:w-1/2 space-y-6 mb-12 md:mb-0">
+          <div class="animate-fade-in-up">
+            <span class="text-blue-600 font-semibold mb-4 inline-block">Empowering Indian SMEs & Individuals</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              Smart Financial Solutions for Growth & Success
+            </h1>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+              Transform your financial journey with Finpercent's innovative tools and strategies. Experience seamless investment pooling, expert guidance, and revolutionary S.T.O.P strategy.
+            </p>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#get-started" class="inline-block px-8 py-4 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors text-center">
+              Get Started Now
+            </a>
+            <a href="#how-it-works" class="inline-block px-8 py-4 bg-white text-green-600 rounded-full font-semibold hover:bg-gray-50 transition-colors border-2 border-green-600 text-center">
+              Learn More
+            </a>
+          </div>
+
+          <div class="pt-8">
+            <div class="flex items-center gap-6">
+              <div class="flex items-center">
+                <div class="flex -space-x-2">
+                  <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                    <span class="text-blue-600 font-semibold">50K+</span>
+                  </div>
+                  <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                    <span class="text-green-600 font-semibold">4.9★</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-600">
+                Trusted by over 50,000+ SMEs and individuals across India
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content - Abstract Design -->
+        <div class="w-full md:w-1/2 relative">
+          <div class="relative">
+            <div class="absolute top-0 right-0 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div class="absolute top-0 right-32 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 right-16 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+            
+            <div class="relative">
+              <div class="w-full h-[500px] bg-white rounded-2xl shadow-lg p-8 backdrop-blur-sm bg-opacity-60 hover:shadow-xl transition-all duration-300">
+                <img 
+                  src="https://images.unsplash.com/photo-1556741533-974f8e62a92d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                  alt="Fintech Dashboard"
+                  class="w-full h-full object-cover rounded-lg"
+                  loading="lazy"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="298c8070-8dde-4885-993c-4c1f03feabf9" data-section-id="298c8070-8dde-4885-993c-4c1f03feabf9">
+
+<htmlCode>
+<div id="root">
+  <section id="Features" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Innovative Financial Solutions</h2>
+        <p class="text-gray-600 text-lg">Discover our comprehensive suite of features designed to revolutionize your financial management and investment strategy.</p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- S.T.O.P Strategy -->
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+          <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">S.T.O.P Strategy</h3>
+          <p class="text-gray-600 mb-4">Our proprietary financial management approach helping businesses optimize their resources and maximize returns.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Investment Pooling -->
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+          <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Investment Pooling</h3>
+          <p class="text-gray-600 mb-4">Collective investment opportunities that allow businesses to pool resources for better returns and reduced risks.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Live-Stream Showcases -->
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+          <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Live-Stream Products</h3>
+          <p class="text-gray-600 mb-4">Real-time product demonstrations and financial education sessions through our interactive platform.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Digital Banking -->
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+          <div class="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Velocity Banking</h3>
+          <p class="text-gray-600 mb-4">Advanced digital banking solutions designed specifically for SMEs to manage cash flow efficiently.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Financial Analytics -->
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+          <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Analytics</h3>
+          <p class="text-gray-600 mb-4">Data-driven insights and analytics to help you make informed financial decisions.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Digital Security -->
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+          <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Secure Transactions</h3>
+          <p class="text-gray-600 mb-4">Enterprise-grade security measures ensuring safe and reliable financial operations.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="0ae64314-57a2-480f-85ae-7aec9e897515" data-section-id="0ae64314-57a2-480f-85ae-7aec9e897515">
+
+<htmlCode>
+<div id="root">
+  <section id="Services" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Comprehensive Financial Services</h2>
+        <p class="text-gray-600 text-lg">Explore our range of innovative financial solutions designed for SMEs and individuals in India</p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="space-y-12">
+        <!-- S.T.O.P Strategy -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition-transform">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 p-8 md:p-12">
+              <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">S.T.O.P Strategy</h3>
+              <p class="text-gray-600 mb-6">Our revolutionary financial management approach that helps businesses:</p>
+              <ul class="space-y-3 text-gray-600 mb-8">
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Streamline operations
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Track performance metrics
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Optimize resources
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Plan growth strategies
+                </li>
+              </ul>
+              <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">Learn More</button>
+            </div>
+<div class="md:w-1/2 bg-gradient-to-br from-blue-50 to-blue-100 p-8 md:p-12 flex items-center justify-center">
+  <img src="https://www.svgrepo.com/show/530907/financial-report.svg" 
+       alt="Financial Strategy Illustration" 
+       class="w-full h-auto max-w-md"
+       loading="lazy">
+</div>
+          </div>
+        </div>
+
+        <!-- Investment Pooling -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition-transform">
+          <div class="flex flex-col md:flex-row-reverse">
+            <div class="md:w-1/2 p-8 md:p-12">
+              <div class="bg-green-100 text-green-600 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Investment Pooling</h3>
+              <p class="text-gray-600 mb-6">Join forces with other businesses to maximize investment potential:</p>
+              <ul class="space-y-3 text-gray-600 mb-8">
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Reduced investment risks
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Access to larger opportunities
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Professional portfolio management
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Better returns on investment
+                </li>
+              </ul>
+              <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">Get Started</button>
+            </div>
+            <div class="md:w-1/2 bg-gradient-to-br from-green-50 to-green-100 p-8 md:p-12 flex items-center justify-center">
+              <img src="https://www.svgrepo.com/show/530908/investment-portfolio.svg" 
+                   alt="Investment Portfolio Illustration" 
+                   class="w-full h-auto max-w-md"
+                   loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Velocity Banking -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition-transform">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 p-8 md:p-12">
+              <div class="bg-purple-100 text-purple-600 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Velocity Banking</h3>
+              <p class="text-gray-600 mb-6">Advanced banking solutions for modern businesses:</p>
+              <ul class="space-y-3 text-gray-600 mb-8">
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Real-time transaction monitoring
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Automated reconciliation
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Smart cash flow management
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Integrated payment solutions
+                </li>
+              </ul>
+              <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">Explore Now</button>
+            </div>
+            <div class="md:w-1/2 bg-gradient-to-br from-purple-50 to-purple-100 p-8 md:p-12 flex items-center justify-center">
+              <img src="https://www.svgrepo.com/show/530910/digital-banking.svg" 
+                   alt="Digital Banking Illustration" 
+                   class="w-full h-auto max-w-md"
+                   loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="7397a50b-acec-4445-93c8-118fa87a97b9" data-section-id="7397a50b-acec-4445-93c8-118fa87a97b9">
+
+<htmlCode>
+<div id="root">
+  <section id="HowItWorks" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How Finpercent Works</h2>
+        <p class="text-gray-600 text-lg">Start your financial journey with our simple step-by-step process</p>
+      </div>
+
+      <!-- Steps Timeline -->
+      <div class="relative">
+        <!-- Vertical Line -->
+        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-blue-100"></div>
+
+        <!-- Steps -->
+        <div class="space-y-16">
+          <!-- Step 1 -->
+          <div class="relative">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:pr-16 mb-8 md:mb-0">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                  <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4">1</div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">Sign Up & Profile Creation</h3>
+                  <p class="text-gray-600">Create your account and complete your business profile with essential details about your enterprise.</p>
+                  <ul class="mt-4 space-y-2">
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Quick registration process
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Secure verification system
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-blue-600 rounded-full border-4 border-white"></div>
+              <div class="md:w-1/2 md:pl-16">
+                <div class="bg-blue-50 p-6 rounded-xl">
+                  <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-white shadow-inner"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative">
+            <div class="flex flex-col md:flex-row-reverse items-center">
+              <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                  <div class="bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4">2</div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">Financial Assessment</h3>
+                  <p class="text-gray-600">Our system analyzes your business needs and recommends tailored financial solutions.</p>
+                  <ul class="mt-4 space-y-2">
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Automated analysis
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Customized recommendations
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-green-600 rounded-full border-4 border-white"></div>
+              <div class="md:w-1/2 md:pr-16">
+                <div class="bg-green-50 p-6 rounded-xl">
+                  <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-white shadow-inner"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:pr-16 mb-8 md:mb-0">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                  <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4">3</div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">Strategy Implementation</h3>
+                  <p class="text-gray-600">Execute your personalized financial strategy with our expert guidance and tools.</p>
+                  <ul class="mt-4 space-y-2">
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Step-by-step guidance
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Real-time support
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-purple-600 rounded-full border-4 border-white"></div>
+              <div class="md:w-1/2 md:pl-16">
+                <div class="bg-purple-50 p-6 rounded-xl">
+                  <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-white shadow-inner"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative">
+            <div class="flex flex-col md:flex-row-reverse items-center">
+              <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                  <div class="bg-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4">4</div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">Monitor & Optimize</h3>
+                  <p class="text-gray-600">Track your progress and optimize your financial strategy with real-time analytics.</p>
+                  <ul class="mt-4 space-y-2">
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Performance tracking
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Regular optimization
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-indigo-600 rounded-full border-4 border-white"></div>
+              <div class="md:w-1/2 md:pr-16">
+                <div class="bg-indigo-50 p-6 rounded-xl">
+                  <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-white shadow-inner"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="mt-20 text-center">
+        <a href="#get-started" class="inline-block bg-green-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-700 transition-colors">
+          Start Your Journey Now
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="a857255f-234f-41d1-9066-38bd7b33260a" data-section-id="a857255f-234f-41d1-9066-38bd7b33260a">
+
+<htmlCode>
+<div id="root">
+  <section id="Testimonials" class="py-20 bg-gradient-to-b from-blue-50 to-white">
+    <div class="container mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
+        <p class="text-gray-600 text-lg">Hear from businesses and individuals who have transformed their financial journey with Finpercent</p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-transform duration-300">
+          <div class="flex items-center mb-6">
+            <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl">
+              RS
+            </div>
+            <div class="ml-4">
+              <h3 class="font-bold text-gray-900">Rahul Sharma</h3>
+              <p class="text-sm text-gray-600">Small Business Owner, Delhi</p>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex text-yellow-400 mb-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">"Finpercent's S.T.O.P strategy helped me optimize my business operations and increase profitability by 40% in just 6 months. Their support team is exceptional!"</p>
+          <div class="text-blue-600 font-semibold text-sm">Verified Customer</div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-transform duration-300">
+          <div class="flex items-center mb-6">
+            <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xl">
+              PM
+            </div>
+            <div class="ml-4">
+              <h3 class="font-bold text-gray-900">Priya Mehta</h3>
+              <p class="text-sm text-gray-600">Startup Founder, Mumbai</p>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex text-yellow-400 mb-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">"The investment pooling feature allowed us to access opportunities we never could before. Our returns have grown significantly since joining Finpercent."</p>
+          <div class="text-blue-600 font-semibold text-sm">Verified Customer</div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-1 transition-transform duration-300">
+          <div class="flex items-center mb-6">
+            <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold text-xl">
+              AK
+            </div>
+            <div class="ml-4">
+              <h3 class="font-bold text-gray-900">Amit Kumar</h3>
+              <p class="text-sm text-gray-600">E-commerce Owner, Bangalore</p>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex text-yellow-400 mb-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">"The live-stream product showcases have transformed how we learn about financial products. Finpercent's platform is truly revolutionary!"</p>
+          <div class="text-blue-600 font-semibold text-sm">Verified Customer</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-4xl font-bold text-blue-600 mb-2">50K+</div>
+          <p class="text-gray-600">Active Users</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-blue-600 mb-2">₹100Cr+</div>
+          <p class="text-gray-600">Managed Assets</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-blue-600 mb-2">4.9/5</div>
+          <p class="text-gray-600">User Rating</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
+          <p class="text-gray-600">Expert Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="9808aafe-9ce4-466c-bc39-633dd7dbefcb" data-section-id="9808aafe-9ce4-466c-bc39-633dd7dbefcb">
+
+<htmlCode>
+<div id="root">
+  <section id="AboutUs" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Finpercent</h2>
+        <p class="text-gray-600 text-lg">Empowering financial growth through innovation and inclusion</p>
+      </div>
+
+      <!-- Vision & Mission -->
+      <div class="grid md:grid-cols-2 gap-12 mb-20">
+        <div class="bg-blue-50 rounded-2xl p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 ml-4">Our Vision</h3>
+          </div>
+          <p class="text-gray-600 leading-relaxed">To become India's leading financial technology platform, democratizing access to advanced financial solutions for SMEs and individuals, fostering inclusive growth across the nation.</p>
+        </div>
+
+        <div class="bg-green-50 rounded-2xl p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 ml-4">Our Mission</h3>
+          </div>
+          <p class="text-gray-600 leading-relaxed">To empower businesses and individuals with innovative financial tools, expert guidance, and collaborative opportunities that drive sustainable growth and prosperity.</p>
+        </div>
+      </div>
+
+      <!-- Digital India Initiative -->
+      <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 mb-20">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center justify-center mb-8">
+            <div class="w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+              </svg>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-gray-900 mb-6">Supporting Digital India Initiative</h3>
+          <p class="text-gray-600 text-center mb-8">Aligned with the Digital India vision, Finpercent is committed to driving financial inclusion through technology-driven solutions that make financial services accessible to all.</p>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg p-6 text-center">
+              <div class="text-blue-600 font-bold mb-2">Digital Empowerment</div>
+              <p class="text-gray-600 text-sm">Enabling digital financial transactions and management for all</p>
+            </div>
+            <div class="bg-white rounded-lg p-6 text-center">
+              <div class="text-blue-600 font-bold mb-2">Financial Inclusion</div>
+              <p class="text-gray-600 text-sm">Making financial services accessible to underserved segments</p>
+            </div>
+            <div class="bg-white rounded-lg p-6 text-center">
+              <div class="text-blue-600 font-bold mb-2">Technology Innovation</div>
+              <p class="text-gray-600 text-sm">Leveraging cutting-edge tech for financial solutions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Section -->
+      <div class="text-center mb-12">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Leadership Team</h3>
+        <p class="text-gray-600 mb-12">Meet the experts driving innovation in financial technology</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl shadow-md overflow-hidden group hover:shadow-lg transition-shadow">
+            <div class="p-6">
+              <div class="w-24 h-24 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span class="text-2xl font-bold text-gray-500">SK</span>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 mb-2">Suresh Kumar</h4>
+              <p class="text-gray-600 mb-2">Chief Executive Officer</p>
+              <p class="text-sm text-gray-500">20+ years in Financial Services</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-md overflow-hidden group hover:shadow-lg transition-shadow">
+            <div class="p-6">
+              <div class="w-24 h-24 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span class="text-2xl font-bold text-gray-500">AP</span>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 mb-2">Anjali Patel</h4>
+              <p class="text-gray-600 mb-2">Chief Technology Officer</p>
+              <p class="text-sm text-gray-500">15+ years in Fintech Innovation</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-md overflow-hidden group hover:shadow-lg transition-shadow">
+            <div class="p-6">
+              <div class="w-24 h-24 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span class="text-2xl font-bold text-gray-500">RG</span>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 mb-2">Rajesh Gupta</h4>
+              <p class="text-gray-600 mb-2">Chief Strategy Officer</p>
+              <p class="text-sm text-gray-500">18+ years in Business Strategy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="grid md:grid-cols-4 gap-6 mt-12">
+        <div class="p-6 text-center">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Trust</h4>
+          <p class="text-sm text-gray-600">Building lasting relationships through transparency and reliability</p>
+        </div>
+        <div class="p-6 text-center">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Innovation</h4>
+          <p class="text-sm text-gray-600">Continuously evolving to meet tomorrow's financial needs</p>
+        </div>
+        <div class="p-6 text-center">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Collaboration</h4>
+          <p class="text-sm text-gray-600">Growing together through shared success and partnerships</p>
+        </div>
+        <div class="p-6 text-center">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Excellence</h4>
+          <p class="text-sm text-gray-600">Delivering superior solutions and service quality</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="eddedb03-3ad5-4d84-bcd9-83e2f5850312" data-section-id="eddedb03-3ad5-4d84-bcd9-83e2f5850312">
+
+<htmlCode>
+<div id="root">
+  <section id="Blog" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Financial Insights & Resources</h2>
+        <p class="text-gray-600 text-lg">Stay updated with the latest trends, strategies, and success stories in finance</p>
+      </div>
+
+      <!-- Featured Article -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+            <div class="mb-4">
+              <span class="bg-blue-100 text-blue-600 text-sm font-semibold px-4 py-1 rounded-full">Featured</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Understanding the S.T.O.P Strategy: A Game-Changer for SMEs</h3>
+            <p class="text-gray-600 mb-6">Discover how our proprietary financial management approach is helping businesses optimize their operations and maximize returns.</p>
+            <div class="flex items-center mb-6">
+              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <span class="text-blue-600 font-semibold">AK</span>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-semibold text-gray-900">Arun Kumar</p>
+                <p class="text-sm text-gray-500">Financial Analyst</p>
+              </div>
+            </div>
+            <a href="#" class="text-blue-600 font-semibold inline-flex items-center hover:text-blue-700">
+              Read More
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="md:w-1/2 bg-gradient-to-br from-blue-50 to-green-50 p-12 flex items-center justify-center">
+              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   alt="Business strategy meeting" 
+                   class="w-full h-64 object-cover rounded-xl shadow-inner"
+                   loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest Articles Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Article 1 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+          <div class="h-48 bg-gray-100"></div>
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <span class="bg-green-100 text-green-600 text-xs font-semibold px-3 py-1 rounded-full">Investment</span>
+              <span class="text-gray-500 text-sm ml-4">5 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Investment Pooling: Maximizing Returns Through Collaboration</h3>
+            <p class="text-gray-600 mb-4">Learn how small businesses are leveraging collective investment opportunities...</p>
+            <a href="#" class="text-blue-600 font-semibold text-sm hover:text-blue-700">Continue Reading →</a>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+          <div class="h-48 bg-gray-100"></div>
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <span class="bg-purple-100 text-purple-600 text-xs font-semibold px-3 py-1 rounded-full">Strategy</span>
+              <span class="text-gray-500 text-sm ml-4">7 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Digital Banking: The Future of SME Finance Management</h3>
+            <p class="text-gray-600 mb-4">Explore how digital banking solutions are transforming business operations...</p>
+            <a href="#" class="text-blue-600 font-semibold text-sm hover:text-blue-700">Continue Reading →</a>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+          <div class="h-48 bg-gray-100"></div>
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <span class="bg-yellow-100 text-yellow-600 text-xs font-semibold px-3 py-1 rounded-full">Success Story</span>
+              <span class="text-gray-500 text-sm ml-4">4 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">From Local to Global: An SME Success Story</h3>
+            <p class="text-gray-600 mb-4">Read how a small business expanded internationally using Finpercent's solutions...</p>
+            <a href="#" class="text-blue-600 font-semibold text-sm hover:text-blue-700">Continue Reading →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a href="#" class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center">
+          <h4 class="font-semibold text-gray-900 mb-2">Financial Strategy</h4>
+          <p class="text-sm text-gray-500">12 Articles</p>
+        </a>
+        <a href="#" class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center">
+          <h4 class="font-semibold text-gray-900 mb-2">Investment Tips</h4>
+          <p class="text-sm text-gray-500">8 Articles</p>
+        </a>
+        <a href="#" class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center">
+          <h4 class="font-semibold text-gray-900 mb-2">Success Stories</h4>
+          <p class="text-sm text-gray-500">15 Articles</p>
+        </a>
+        <a href="#" class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center">
+          <h4 class="font-semibold text-gray-900 mb-2">Market Analysis</h4>
+          <p class="text-sm text-gray-500">10 Articles</p>
+        </a>
+      </div>
+
+      <!-- Newsletter Subscription -->
+      <div class="mt-16 bg-blue-600 rounded-2xl p-8 text-center">
+        <h3 class="text-2xl font-bold text-white mb-4">Stay Updated with Financial Insights</h3>
+        <p class="text-blue-100 mb-6">Subscribe to our newsletter for the latest financial strategies and success stories</p>
+        <form class="max-w-md mx-auto">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <button type="submit" class="px-8 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="f2a995a6-83e5-4646-b701-a1cbe22aa245" data-section-id="f2a995a6-83e5-4646-b701-a1cbe22aa245">
+
+<htmlCode>
+<div id="root">
+  <section id="Contact" class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">Have questions about how Finpercent can help your business grow? Our team is here to help you navigate your financial journey.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Contact Form -->
+          <div class="bg-white rounded-xl shadow-lg p-8">
+            <form class="space-y-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your name"/>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your email"/>
+              </div>
+
+              <div>
+                <label for="business" class="block text-sm font-medium text-gray-700">Business Name</label>
+                <input type="text" id="business" name="business" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your business name"/>
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="How can we help you?"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300 font-medium">Send Message</button>
+            </form>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="space-y-8">
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Contact Information</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <svg class="w-6 h-6 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-medium text-gray-800">Office Address</h4>
+                    <p class="text-gray-600">Finpercent Headquarters, Bangalore, India</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-6 h-6 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-medium text-gray-800">Email</h4>
+                    <p class="text-gray-600">support@finpercent.com</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-6 h-6 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-medium text-gray-800">Phone</h4>
+                    <p class="text-gray-600">+91 (800) 123-4567</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Business Hours</h3>
+              <div class="space-y-2">
+                <p class="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p class="text-gray-600">Saturday: 10:00 AM - 2:00 PM</p>
+                <p class="text-gray-600">Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="dcd8b353-829d-4b9f-b974-fe599ad423c4" data-section-id="dcd8b353-829d-4b9f-b974-fe599ad423c4">
+
+<htmlCode>
+<div id="root">
+  <footer id="Footer" class="bg-gray-900 text-gray-300">
+    <!-- Main Footer Content -->
+    <div class="container mx-auto px-4 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Company Info -->
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-white">Finpercent</h3>
+          <p class="text-gray-400">Empowering SMEs and individuals with innovative financial solutions for a better tomorrow.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.978 13.978 0 011.671 3.149a4.93 4.93 0 001.523 6.574 4.903 4.903 0 01-2.229-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.224.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0022 4.557z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Our Services</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">How It Works</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-4">Our Services</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">S.T.O.P Strategy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Velocity Banking</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Investment Pooling</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Live Streaming</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Financial Planning</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-4">Stay Updated</h4>
+          <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and insights.</p>
+          <form class="space-y-2">
+            <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 text-gray-300">
+            <button class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="border-t border-gray-800">
+      <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-sm text-gray-400">
+            © 2024 Finpercent. All rights reserved.
+          </div>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="text-sm text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+            <a href="#" class="text-sm text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+            <a href="#" class="text-sm text-gray-400 hover:text-white transition duration-300">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</htmlCode></element>
+            <div id="page_complete">
+            <script>
+                console.log('Page complete');
+            </script>
+            </body>
+            </html>
