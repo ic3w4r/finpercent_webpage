@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Finpercent - Premium Financial Solutions with Glassmorphic Design">
+    <meta name="theme-color" content="#667eea">
+    <title>Finpercent - Smart Financial Solutions</title>
+    
+    <!-- Enhanced CDN Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        accent: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        glass: {
+                            white: 'rgba(255, 255, 255, 0.1)',
+                            dark: 'rgba(0, 0, 0, 0.1)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'slide-down': 'slideDown 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'scale-in': 'scaleIn 0.6s ease-out forwards',
+                        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+                        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
+                            '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.6)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '0.8' },
+                            '50%': { opacity: '1' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        },
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                        'neuro': 'inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff',
+                        'neuro-pressed': 'inset -5px -5px 10px #d1d9e6, inset 5px 5px 10px #ffffff',
+                        'glow-blue': '0 0 20px rgba(59, 130, 246, 0.3)',
+                        'glow-green': '0 0 20px rgba(34, 197, 94, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Glassmorphism and Neumorphism Custom Styles */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .neuro {
+            background: linear-gradient(145deg, #f0f0f0, #cacaca);
+            box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+        }
+        
+        .neuro-pressed {
+            background: linear-gradient(145deg, #cacaca, #f0f0f0);
+            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+        }
+        
+        .neuro-dark {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            box-shadow: 5px 5px 10px #0f0f0f, -5px -5px 10px #3f3f3f;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-bg-alt {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2.5s infinite;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(102, 126, 234, 0.5);
+        }
+        
+        /* Counter Animation */
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(2) {
+            animation-delay: -2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            animation-delay: -4s;
+        }
+        
+        /* Interactive Hover Effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Button Ripple Effect */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Form Focus Effects */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+        }
+        
+        /* Loading States */
+        .loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .glass {
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen overflow-x-hidden">
+    <!-- Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="floating-element absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-xl"></div>
+        <div class="floating-element absolute top-40 right-20 w-48 h-48 bg-gradient-to-r from-pink-400/20 to-red-400/20 rounded-full blur-xl"></div>
+        <div class="floating-element absolute bottom-20 left-1/4 w-40 h-40 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full blur-xl"></div>
+        <div class="floating-element absolute bottom-40 right-1/3 w-36 h-36 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full blur-xl"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav x-data="{ 
+        open: false, 
+        scrolled: false,
+        activeSection: 'home'
+    }" 
+    x-init="
+        window.addEventListener('scroll', () => {
+            scrolled = window.scrollY > 50;
+        });
+        
+        // Intersection Observer for active sections
+        const sections = document.querySelectorAll('section[id]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    activeSection = entry.target.id;
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        sections.forEach(section => observer.observe(section));
+    " 
+    class="fixed w-full top-0 z-50 transition-all duration-300"
+    :class="scrolled ? 'glass shadow-lg py-2' : 'py-4'">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="flex items-center group">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-3 group-hover:shadow-glow-blue transition-all duration-300">
+                            <i class="fas fa-chart-line text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">Finpercent</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                       :class="activeSection === 'home' ? 'text-blue-600' : 'text-gray-700'">Home</a>
+                    <a href="#about" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                       :class="activeSection === 'about' ? 'text-blue-600' : 'text-gray-700'">About</a>
+                    <a href="#services" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                       :class="activeSection === 'services' ? 'text-blue-600' : 'text-gray-700'">Services</a>
+                    <a href="#how-it-works" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                       :class="activeSection === 'how-it-works' ? 'text-blue-600' : 'text-gray-700'">How It Works</a>
+                    <a href="#testimonials" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                       :class="activeSection === 'testimonials' ? 'text-blue-600' : 'text-gray-700'">Reviews</a>
+                    <a href="#contact" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                       :class="activeSection === 'contact' ? 'text-blue-600' : 'text-gray-700'">Contact</a>
+                    
+                    <button class="glass px-6 py-2 rounded-full font-semibold text-blue-600 hover:bg-blue-50 transition-all duration-300 btn-ripple hover-lift">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button @click="open = !open" class="glass p-2 rounded-lg text-gray-700 hover:text-blue-600 transition-colors">
+                        <svg class="h-6 w-6" :class="{'hidden': open, 'block': !open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg class="h-6 w-6" :class="{'block': open, 'hidden': !open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div x-show="open" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-2"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 transform translate-y-0"
+                 x-transition:leave-end="opacity-0 transform -translate-y-2"
+                 class="md:hidden mt-4 glass rounded-2xl p-4">
+                <div class="space-y-3">
+                    <a href="#home" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">Home</a>
+                    <a href="#about" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">About</a>
+                    <a href="#services" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">Services</a>
+                    <a href="#how-it-works" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">How It Works</a>
+                    <a href="#testimonials" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">Reviews</a>
+                    <a href="#contact" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">Contact</a>
+                    <button @click="open = false" class="w-full mt-4 glass px-6 py-3 rounded-xl font-semibold text-blue-600 hover:bg-blue-50 transition-all btn-ripple">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <!-- Left Content -->
+                <div class="w-full lg:w-1/2 space-y-8 mb-12 lg:mb-0" 
+                     x-data="{ mounted: false }" 
+                     x-init="setTimeout(() => mounted = true, 200)"
+                     x-show="mounted"
+                     x-transition:enter="transition ease-out duration-1000"
+                     x-transition:enter-start="opacity-0 transform -translate-x-10"
+                     x-transition:enter-end="opacity-100 transform translate-x-0">
+                    
+                    <div class="space-y-6">
+                        <div class="inline-flex items-center glass px-4 py-2 rounded-full text-sm font-medium text-blue-600">
+                            <i class="fas fa-star text-yellow-400 mr-2"></i>
+                            Empowering Indian SMEs & Individuals
+                        </div>
+                        
+                        <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                            Smart <span class="gradient-text">Financial</span> Solutions for <span class="gradient-text">Growth</span>
+                        </h1>
+                        
+                        <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
+                            Transform your financial journey with Finpercent's innovative tools and strategies. Experience seamless investment pooling, expert guidance, and revolutionary S.T.O.P strategy.
+                        </p>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4" x-data="{ clicked: false }">
+                        <button @click="clicked = true" 
+                                class="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-glow-blue transition-all duration-300 btn-ripple hover-lift">
+                            <span class="relative z-10 flex items-center justify-center">
+                                <i class="fas fa-rocket mr-2"></i>
+                                Get Started Now
+                            </span>
+                        </button>
+                        
+                        <button class="group glass px-8 py-4 rounded-2xl font-semibold text-lg text-blue-600 hover:bg-blue-50 transition-all duration-300 btn-ripple hover-lift">
+                            <span class="flex items-center justify-center">
+                                <i class="fas fa-play-circle mr-2"></i>
+                                Learn More
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Stats Counter -->
+                    <div class="grid grid-cols-3 gap-6 pt-8" x-data="animateCounters()">
+                        <div class="glass p-6 rounded-2xl text-center hover-lift">
+                            <div class="text-3xl font-bold text-blue-600 counter" x-text="users">0</div>
+                            <p class="text-gray-600 text-sm mt-1">Active Users</p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl text-center hover-lift">
+                            <div class="text-3xl font-bold text-green-600 counter" x-text="'₹' + assets + 'Cr+'">₹0Cr+</div>
+                            <p class="text-gray-600 text-sm mt-1">Assets Managed</p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl text-center hover-lift">
+                            <div class="text-3xl font-bold text-purple-600 counter" x-text="rating + '/5'">0/5</div>
+                            <p class="text-gray-600 text-sm mt-1">User Rating</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Interactive Dashboard Preview -->
+                <div class="w-full lg:w-1/2 relative" 
+                     x-data="{ mounted: false }" 
+                     x-init="setTimeout(() => mounted = true, 400)"
+                     x-show="mounted"
+                     x-transition:enter="transition ease-out duration-1000"
+                     x-transition:enter-start="opacity-0 transform translate-x-10"
+                     x-transition:enter-end="opacity-100 transform translate-x-0">
+                    
+                    <div class="relative">
+                        <!-- Main Dashboard Card -->
+                        <div class="glass p-8 rounded-3xl hover-lift relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-400/20 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+                            
+                            <!-- Dashboard Header -->
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-xl font-semibold text-gray-800">Financial Dashboard</h3>
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse-soft"></div>
+                                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Interactive Chart Area -->
+                            <div class="bg-white/50 rounded-2xl p-6 mb-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-sm text-gray-600">Portfolio Growth</span>
+                                    <span class="text-green-600 text-sm font-semibold">+24.5%</span>
+                                </div>
+                                
+                                <!-- Animated Chart Bars -->
+                                <div class="flex items-end space-x-2 h-24" x-data="{ animated: false }" x-init="setTimeout(() => animated = true, 1000)">
+                                    <div class="bg-gradient-to-t from-blue-500 to-blue-300 rounded-t transition-all duration-1000" 
+                                         :style="animated ? 'height: 60%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
+                                    <div class="bg-gradient-to-t from-green-500 to-green-300 rounded-t transition-all duration-1000 delay-100" 
+                                         :style="animated ? 'height: 80%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
+                                    <div class="bg-gradient-to-t from-purple-500 to-purple-300 rounded-t transition-all duration-1000 delay-200" 
+                                         :style="animated ? 'height: 45%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
+                                    <div class="bg-gradient-to-t from-yellow-500 to-yellow-300 rounded-t transition-all duration-1000 delay-300" 
+                                         :style="animated ? 'height: 90%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
+                                    <div class="bg-gradient-to-t from-red-500 to-red-300 rounded-t transition-all duration-1000 delay-400" 
+                                         :style="animated ? 'height: 65%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
+                                    <div class="bg-gradient-to-t from-indigo-500 to-indigo-300 rounded-t transition-all duration-1000 delay-500" 
+                                         :style="animated ? 'height: 75%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Stats -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white/30 rounded-xl p-4">
+                                    <div class="text-lg font-semibold text-gray-800">₹2.4L</div>
+                                    <div class="text-sm text-gray-600">Monthly Savings</div>
+                                </div>
+                                <div class="bg-white/30 rounded-xl p-4">
+                                    <div class="text-lg font-semibold text-gray-800">18.5%</div>
+                                    <div class="text-sm text-gray-600">Return Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Action Cards -->
+                        <div class="absolute -top-4 -left-4 glass p-4 rounded-2xl hover-lift floating-element">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-trending-up text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-semibold text-gray-800">Investment Up</div>
+                                    <div class="text-xs text-gray-600">+12.3% today</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-4 -right-4 glass p-4 rounded-2xl hover-lift floating-element">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-shield-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-semibold text-gray-800">Secure</div>
+                                    <div class="text-xs text-gray-600">Bank-grade</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Animation Script -->
+    <script>
+        function animateCounters() {
+            return {
+                users: 0,
+                assets: 0,
+                rating: 0.0,
+                
+                init() {
+                    // Animate counters when component loads
+                    setTimeout(() => {
+                        this.animateCounter('users', 50000, 2000, (val) => val >= 1000 ? Math.floor(val/1000) + 'K+' : val);
+                        this.animateCounter('assets', 100, 2000, (val) => val);
+                        this.animateCounter('rating', 4.9, 2000, (val) => val.toFixed(1));
+                    }, 500);
+                },
+                
+                animateCounter(property, target, duration, formatter) {
+                    const startTime = Date.now();
+                    const startValue = this[property];
+                    
+                    const animate = () => {
+                        const now = Date.now();
+                        const elapsed = now - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        
+                        // Easing function for smooth animation
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        const currentValue = startValue + (target - startValue) * easeOut;
+                        
+                        this[property] = formatter ? formatter(currentValue) : Math.floor(currentValue);
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        }
+                    };
+                    
+                    requestAnimationFrame(animate);
+                }
+            }
+        }
+    </script>
+
+    <!-- Rest of the sections will continue in the next file due to length constraints -->
+</body>
+</html>
