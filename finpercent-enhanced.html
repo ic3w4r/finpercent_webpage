@@ -298,109 +298,109 @@
             }
         }
     </style>
+    <!-- Add Animate.css for logo animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
-
 <body class="font-sans bg-gradient-to-br from-green-50 via-green-100 to-green-200 min-h-screen overflow-x-hidden">
-    <!-- Background Elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="floating-element absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-xl"></div>
-        <div class="floating-element absolute top-40 right-20 w-48 h-48 bg-gradient-to-r from-pink-400/20 to-red-400/20 rounded-full blur-xl"></div>
-        <div class="floating-element absolute bottom-20 left-1/4 w-40 h-40 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full blur-xl"></div>
-        <div class="floating-element absolute bottom-40 right-1/3 w-36 h-36 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full blur-xl"></div>
+    <!-- Animated Logo Loader -->
+    <div id="logo-loader" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-green-50 via-green-100 to-green-200 z-50">
+        <div class="flex flex-col items-center">
+            <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-green-400 rounded-full flex items-center justify-center animate__animated animate__bounceIn">
+                <i class="fas fa-chart-line text-white text-5xl animate__animated animate__pulse animate__infinite"></i>
+            </div>
+            <span class="mt-6 text-3xl font-bold gradient-text animate__animated animate__fadeInDown" style="background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                Finpercent
+            </span>
+        </div>
     </div>
 
-    <!-- Navigation -->
-    <nav x-data="{ 
-        open: false, 
-        scrolled: false,
-        activeSection: 'home'
-    }" 
-    x-init="
-        window.addEventListener('scroll', () => {
-            scrolled = window.scrollY > 50;
-        });
-        
-        // Intersection Observer for active sections
-        const sections = document.querySelectorAll('section[id]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    activeSection = entry.target.id;
-                }
+    <!-- Main Content (hidden until loader finishes) -->
+    <div id="main-content" style="opacity:0; pointer-events:none;">
+        <!-- Background Elements -->
+        <div class="fixed inset-0 overflow-hidden pointer-events-none">
+            <div class="floating-element absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-xl"></div>
+            <div class="floating-element absolute top-40 right-20 w-48 h-48 bg-gradient-to-r from-pink-400/20 to-red-400/20 rounded-full blur-xl"></div>
+            <div class="floating-element absolute bottom-20 left-1/4 w-40 h-40 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full blur-xl"></div>
+            <div class="floating-element absolute bottom-40 right-1/3 w-36 h-36 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full blur-xl"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav x-data="{ 
+            open: false, 
+            scrolled: false,
+            activeSection: 'home'
+        }" 
+        x-init="
+            window.addEventListener('scroll', () => {
+                scrolled = window.scrollY > 50;
             });
-        }, { threshold: 0.3 });
-        
-        sections.forEach(section => observer.observe(section));
-    " 
-    class="fixed w-full top-0 z-50 transition-all duration-300"
-    :class="scrolled ? 'glass shadow-lg py-2' : 'py-4'">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="#home" class="flex items-center group">
-                        <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-400 rounded-xl flex items-center justify-center mr-3 group-hover:shadow-glow-green transition-all duration-300">
-                            <i class="fas fa-chart-line text-white text-lg"></i>
-                        </div>
-                        <!-- Logo Title -->
-                        <span class="text-2xl font-bold gradient-text" style="background: linear-gradient(135deg, #4ade80 0%, #bbf7d0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-    Finpercent
-</span>
-                    </a>
+            
+            // Intersection Observer for active sections
+            const sections = document.querySelectorAll('section[id]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activeSection = entry.target.id;
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            sections.forEach(section => observer.observe(section));
+        " 
+        class="fixed w-full top-0 z-50 transition-all duration-300"
+        :class="scrolled ? 'glass shadow-lg py-2' : 'py-4'">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="#home" class="flex items-center group">
+                            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-400 rounded-xl flex items-center justify-center mr-3 group-hover:shadow-glow-green transition-all duration-300">
+                                <i class="fas fa-chart-line text-white text-lg"></i>
+                            </div>
+                            <!-- Logo Title -->
+                            <span class="text-2xl font-bold gradient-text" style="background: linear-gradient(135deg, #4ade80 0%, #bbf7d0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                Finpercent
+            </span>
+                        </a>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#home" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                           :class="activeSection === 'home' ? 'text-blue-600' : 'text-gray-700'">Home</a>
+                        <a href="#about" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                           :class="activeSection === 'about' ? 'text-blue-600' : 'text-gray-700'">About</a>
+                        <a href="#services" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                           :class="activeSection === 'services' ? 'text-blue-600' : 'text-gray-700'">Services</a>
+                        <a href="#how-it-works" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                           :class="activeSection === 'how-it-works' ? 'text-blue-600' : 'text-gray-700'">How It Works</a>
+                        <a href="#testimonials" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                           :class="activeSection === 'testimonials' ? 'text-blue-600' : 'text-gray-700'">Reviews</a>
+                        <a href="#contact" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
+                           :class="activeSection === 'contact' ? 'text-blue-600' : 'text-gray-700'">Contact</a>
+                        
+                        <button class="glass px-6 py-2 rounded-full font-semibold text-blue-600 hover:bg-blue-50 transition-all duration-300 btn-ripple hover-lift">
+                            Get Started
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button @click="open = !open" class="glass p-2 rounded-lg text-gray-700 hover:text-blue-600 transition-colors">
+                            <svg class="h-6 w-6" :class="{'hidden': open, 'block': !open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                            <svg class="h-6 w-6" :class="{'block': open, 'hidden': !open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
-                       :class="activeSection === 'home' ? 'text-blue-600' : 'text-gray-700'">Home</a>
-                    <a href="#about" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
-                       :class="activeSection === 'about' ? 'text-blue-600' : 'text-gray-700'">About</a>
-                    <a href="#services" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
-                       :class="activeSection === 'services' ? 'text-blue-600' : 'text-gray-700'">Services</a>
-                    <a href="#how-it-works" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
-                       :class="activeSection === 'how-it-works' ? 'text-blue-600' : 'text-gray-700'">How It Works</a>
-                    <a href="#testimonials" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
-                       :class="activeSection === 'testimonials' ? 'text-blue-600' : 'text-gray-700'">Reviews</a>
-                    <a href="#contact" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
-                       :class="activeSection === 'contact' ? 'text-blue-600' : 'text-gray-700'">Contact</a>
-                    
-                    <button class="glass px-6 py-2 rounded-full font-semibold text-blue-600 hover:bg-blue-50 transition-all duration-300 btn-ripple hover-lift">
-                        Get Started
-                    </button>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button @click="open = !open" class="glass p-2 rounded-lg text-gray-700 hover:text-blue-600 transition-colors">
-                        <svg class="h-6 w-6" :class="{'hidden': open, 'block': !open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                        <svg class="h-6 w-6" :class="{'block': open, 'hidden': !open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Navigation Menu -->
-            <div x-show="open" 
-                 x-transition:enter="transition ease-out duration-300"
-                 x-transition:enter-start="opacity-0 transform -translate-y-2"
-                 x-transition:enter-end="opacity-100 transform translate-y-0"
-                 x-transition:leave="transition ease-in duration-200"
-                 x-transition:leave-start="opacity-100 transform translate-y-0"
-                 x-transition:leave-end="opacity-0 transform -translate-y-2"
-                 class="md:hidden mt-4 glass rounded-2xl p-4">
-                <div class="space-y-3">
-                    <a href="#home" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">Home</a>
-                    <a href="#about" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">About</a>
-                    <a href="#services" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">Services</a>
-                    <a href="#how-it-works" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">How It Works</a>
-                    <a href="#testimonials" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">Reviews</a>
-                    <a href="#contact" @click="open = false" class="block px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">Contact</a>
-                    <button @click="open = false" class="w-full mt-4 glass px-6 py-3 rounded-xl font-semibold text-blue-600 hover:bg-blue-50 transition-all btn-ripple">
-                        Get Started
-                    </button>
+                <!-- Mobile Navigation Menu -->
+                <div x-show="open" 
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 transform -translate-y-2"
                 </div>
             </div>
         </div>
@@ -1714,6 +1714,16 @@
                     ripple.remove();
                 }, 600);
             });
+        });
+
+        // Animate loader, then show main content
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('logo-loader').style.opacity = 0;
+                document.getElementById('logo-loader').style.pointerEvents = 'none';
+                document.getElementById('main-content').style.opacity = 1;
+                document.getElementById('main-content').style.pointerEvents = 'auto';
+            }, 1800); // Adjust duration as needed
         });
     </script>
 </body>
