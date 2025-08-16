@@ -409,137 +409,110 @@
     <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 relative overflow-hidden">
     <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row items-center">
-            <!-- Left Content -->
-            <div class="w-full lg:w-1/2 space-y-8 mb-12 lg:mb-0">
-                <div class="space-y-6">
-                    <div class="inline-flex items-center glass px-4 py-2 rounded-full text-sm font-medium text-green-700">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Left Content: Headline -->
+            <div class="w-full lg:w-1/2 flex flex-col justify-center space-y-8">
+                <div>
+                    <div class="inline-flex items-center glass px-4 py-2 rounded-full text-sm font-medium text-green-700 mb-4">
                         <i class="fas fa-store text-green-400 mr-2"></i>
                         Built for Indian Small Businesses, Startups, Shops, and Local Entrepreneurs
                     </div>
-                    <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
-                        Smart <span class="gradient-text">Financial</span> Solutions for <span class="gradient-text">Small Businesses</span>
+                    <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
+                        Smart <span class="gradient-text">Financial</span> Solutions<br>
+                        for <span class="gradient-text">Small Businesses</span>
                     </h1>
-                    <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
-                        Finpercent is your partner for growth. Whether you run a local shop, a family business, a startup, or a small manufacturing unit, our platform helps you pool investments, manage cash flow, and access expert financial strategies tailored for Indian SMEs. 
-                        <br><br>
-                        <span class="font-semibold text-green-700">Who is Finpercent for?</span>
-                        <ul class="list-disc pl-6 mt-2 text-base text-gray-700">
-                            <li>Retail shop owners looking to grow and manage finances better</li>
-                            <li>Startup founders seeking smarter investment options</li>
-                            <li>Family businesses wanting to optimize resources</li>
-                            <li>Local manufacturers aiming for better cash flow and planning</li>
-                            <li>Service providers and freelancers who want to pool resources and invest together</li>
-                        </ul>
-                    </p>
-                </div>
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                    <a href="#interest-landing" class="group relative overflow-hidden bg-gradient-to-r from-green-500 to-green-400 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-glow-green transition-all duration-300 btn-ripple hover-lift">
-                        <span class="relative z-10 flex items-center justify-center">
-                            <i class="fas fa-user-plus mr-2"></i>
-                            I'm Interested
-                        </span>
-                    </a>
-                    <button class="group glass px-8 py-4 rounded-2xl font-semibold text-lg text-green-700 hover:bg-green-50 transition-all duration-300 btn-ripple hover-lift">
-                        <span class="flex items-center justify-center">
-                            <i class="fas fa-play-circle mr-2"></i>
-                            Learn More
-                        </span>
-                    </button>
                 </div>
             </div>
+            <!-- Right Content: Who is it for & Benefits -->
+            <div class="w-full lg:w-1/2 flex flex-col space-y-8">
+                <div class="glass p-6 rounded-2xl mb-4">
+                    <h2 class="text-2xl font-bold text-green-700 mb-2">Who is Finpercent for?</h2>
+                    <ul class="list-disc pl-6 text-base text-gray-700 space-y-2">
+                        <li>Retail shop owners looking to grow and manage finances better</li>
+                        <li>Startup founders seeking smarter investment options</li>
+                        <li>Family businesses wanting to optimize resources</li>
+                        <li>Local manufacturers aiming for better cash flow and planning</li>
+                        <li>Service providers and freelancers who want to pool resources and invest together</li>
+                    </ul>
+                </div>
+                <div class="glass p-6 rounded-2xl">
+                    <h2 class="text-xl font-semibold text-green-700 mb-2">Why Choose Finpercent?</h2>
+                    <ul class="list-disc pl-6 text-base text-gray-700 space-y-2">
+                        <li>Tailored financial strategies for Indian SMEs</li>
+                        <li>Seamless investment pooling and cash flow management</li>
+                        <li>Expert guidance and analytics for business growth</li>
+                        <li>Secure, easy-to-use platform with 24/7 support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Combined CTA Button Centered -->
+        <div class="flex justify-center mt-12">
+            <a href="#interest-landing" class="group relative overflow-hidden bg-gradient-to-r from-green-500 to-green-400 text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-lg hover:shadow-glow-green transition-all duration-300 btn-ripple hover-lift">
+                <span class="flex items-center justify-center">
+                    <i class="fas fa-user-plus mr-3"></i>
+                    Join Early Access & I'm Interested
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
 
-            <!-- Right Content - Interactive Dashboard Preview -->
-            <div class="w-full lg:w-1/2 relative" 
-                 x-data="{ mounted: false }" 
-                 x-init="setTimeout(() => mounted = true, 400)"
-                 x-show="mounted"
-                 x-transition:enter="transition ease-out duration-1000"
-                 x-transition:enter-start="opacity-0 transform translate-x-10"
-                 x-transition:enter-end="opacity-100 transform translate-x-0">
-                    
-                    <div class="relative">
-                        <!-- Main Dashboard Card -->
-                        <div class="glass p-8 rounded-3xl hover-lift relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-400/20 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
-                            
-                            <!-- Dashboard Header -->
-                            <div class="flex items-center justify-between mb-6">
-                                <h3 class="text-xl font-semibold text-gray-800">Financial Dashboard</h3>
-                                <div class="flex space-x-2">
-                                    <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse-soft"></div>
-                                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Interactive Chart Area -->
-                            <div class="bg-white/50 rounded-2xl p-6 mb-6">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="text-sm text-gray-600">Portfolio Growth</span>
-                                    <span class="text-green-600 text-sm font-semibold">+24.5%</span>
-                                </div>
-                                
-                                <!-- Animated Chart Bars -->
-                                <div class="flex items-end space-x-2 h-24" x-data="{ animated: false }" x-init="setTimeout(() => animated = true, 1000)">
-                                    <div class="bg-gradient-to-t from-blue-500 to-blue-300 rounded-t transition-all duration-1000" 
-                                         :style="animated ? 'height: 60%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
-                                    <div class="bg-gradient-to-t from-green-500 to-green-300 rounded-t transition-all duration-1000 delay-100" 
-                                         :style="animated ? 'height: 80%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
-                                    <div class="bg-gradient-to-t from-purple-500 to-purple-300 rounded-t transition-all duration-1000 delay-200" 
-                                         :style="animated ? 'height: 45%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
-                                    <div class="bg-gradient-to-t from-yellow-500 to-yellow-300 rounded-t transition-all duration-1000 delay-300" 
-                                         :style="animated ? 'height: 90%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
-                                    <div class="bg-gradient-to-t from-red-500 to-red-300 rounded-t transition-all duration-1000 delay-400" 
-                                         :style="animated ? 'height: 65%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
-                                    <div class="bg-gradient-to-t from-indigo-500 to-indigo-300 rounded-t transition-all duration-1000 delay-500" 
-                                         :style="animated ? 'height: 75%; width: 12px;' : 'height: 0%; width: 12px;'"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Quick Stats -->
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-white/30 rounded-xl p-4">
-                                    <div class="text-lg font-semibold text-gray-800">₹2.4L</div>
-                                    <div class="text-sm text-gray-600">Monthly Savings</div>
-                                </div>
-                                <div class="bg-white/30 rounded-xl p-4">
-                                    <div class="text-lg font-semibold text-gray-800">18.5%</div>
-                                    <div class="text-sm text-gray-600">Return Rate</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Floating Action Cards -->
-                        <div class="absolute -top-4 -left-4 glass p-4 rounded-2xl hover-lift floating-element">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-xl flex items-center justify-center">
-                                    <i class="fas fa-trending-up text-white"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-semibold text-gray-800">Investment Up</div>
-                                    <div class="text-xs text-gray-600">+12.3% today</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="absolute -bottom-4 -right-4 glass p-4 rounded-2xl hover-lift floating-element">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-500 rounded-xl flex items-center justify-center">
-                                    <i class="fas fa-shield-alt text-white"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-semibold text-gray-800">Secure</div>
-                                    <div class="text-xs text-gray-600">Bank-grade</div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Enhanced About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-slate-50 to-white relative">
+    <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- About Text -->
+            <div>
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">
+                    Why Finpercent is Different
+                </h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    Finpercent is more than just a financial platform—it's a growth partner for India's small businesses. We combine advanced technology, expert advice, and community-driven investment to help you unlock new opportunities and thrive in a competitive market.
+                </p>
+                <ul class="list-disc pl-6 text-base text-gray-700 space-y-2 mb-6">
+                    <li>Personalized financial planning for every business type</li>
+                    <li>Collaborative investment pools for better returns</li>
+                    <li>Real-time analytics and performance tracking</li>
+                    <li>Secure, transparent, and easy-to-use tools</li>
+                </ul>
+                <a href="#interest-landing" class="inline-block bg-gradient-to-r from-green-500 to-green-400 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-glow-green transition-all duration-300 btn-ripple hover-lift">
+                    Join Early Access
+                </a>
+            </div>
+            <!-- About Visual -->
+            <div class="flex flex-col space-y-6">
+                <div class="glass p-6 rounded-2xl flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-lg font-semibold text-gray-900">Growth Analytics</div>
+                        <div class="text-sm text-gray-600">Track your business progress in real time</div>
+                    </div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-400 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-lg font-semibold text-gray-900">Community Pooling</div>
+                        <div class="text-sm text-gray-600">Invest together, grow together</div>
+                    </div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-yellow-400 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-lg font-semibold text-gray-900">Secure Platform</div>
+                        <div class="text-sm text-gray-600">Bank-grade security for your peace of mind</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Features Section -->
     <section id="services" class="py-20 relative">
@@ -1135,6 +1108,66 @@
         </div>
     </section>
 
+    <!-- Join Finpercent Early Access Form (moved between reviews and contact) -->
+    <section id="interest-landing" class="py-20 bg-gradient-to-br from-green-50 via-green-100 to-green-200 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto glass rounded-3xl p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        Join Finpercent Early Access
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-8">
+                        Are you a small business owner, entrepreneur, or startup founder interested in smarter financial solutions? Sign up below to get early access, updates, and exclusive offers!
+                    </p>
+                    <!-- Combined CTA Button Centered -->
+                    <a href="#interest-landing-form" class="group relative overflow-hidden bg-gradient-to-r from-green-500 to-green-400 text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-lg hover:shadow-glow-green transition-all duration-300 btn-ripple hover-lift inline-block mb-8">
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-user-plus mr-3"></i>
+                            Join Early Access & I'm Interested
+                        </span>
+                    </a>
+                </div>
+                <form id="interest-landing-form" x-data="{
+                    name: '',
+                    email: '',
+                    business: '',
+                    submitted: false,
+                    submit() {
+                        if (this.name && this.email && this.business) {
+                            this.submitted = true;
+                            setTimeout(() => this.submitted = false, 4000);
+                            this.name = '';
+                            this.email = '';
+                            this.business = '';
+                        }
+                    }
+                }" @submit.prevent="submit" class="space-y-6">
+                    <div x-show="submitted" x-transition class="bg-green-100 border border-green-300 rounded-xl p-4 text-green-800 mb-4">
+                        Thank you for your interest! We'll be in touch soon.
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                        <input type="text" x-model="name" required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <input type="email" x-model="email" required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300" placeholder="you@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Business Type</label>
+                        <input type="text" x-model="business" required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300" placeholder="e.g. Retail, Manufacturing, Services">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-green-400 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:shadow-glow-green transition-all duration-300 btn-ripple">
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Request Early Access
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Enhanced Contact Section -->
     <section id="contact" class="py-20 bg-gradient-to-br from-green-50 via-green-100 to-green-200 relative">
         <div class="container mx-auto px-4">
@@ -1272,7 +1305,7 @@
                             <!-- Submit Button -->
                             <button type="submit" 
                                     :disabled="loading"
-                                    class="w-full bg-gradient-to-r from-green-500 to-green-400 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:shadow-glow-green transition-all duration-300 btn-ripple disabled:opacity-50 disabled:cursor-not-allowed">
+                                    class="w-full bg-gradient-to-r from-green-500 to-green-400 text-white py-3 rounded-xl font-semibold hover:shadow-glow-green transition-all duration-300 btn-ripple">
                                 <span x-show="!loading" class="flex items-center justify-center">
                                     <i class="fas fa-paper-plane mr-2"></i>
                                     Send Message
@@ -1496,6 +1529,43 @@
             class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center hover:shadow-glow-blue transition-all duration-300 z-50 hover-lift">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- WhatsApp Chat Pop-up -->
+<div x-data="{ open: false }" class="fixed bottom-8 left-8 z-50">
+    <button @click="open = !open"
+        class="bg-gradient-to-r from-green-500 to-green-400 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center hover:scale-105 transition-all duration-300 btn-ripple hover-lift"
+        aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </button>
+    <div x-show="open"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform scale-90"
+        x-transition:enter-end="opacity-100 transform scale-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="opacity-0 transform scale-90"
+        class="mt-4 glass p-6 rounded-2xl w-80 shadow-xl">
+        <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-400 rounded-full flex items-center justify-center mr-3">
+                <i class="fab fa-whatsapp text-white text-xl"></i>
+            </div>
+            <div>
+                <div class="font-bold text-green-700">Contact Us on WhatsApp</div>
+                <div class="text-sm text-gray-600">Instant support for your business queries</div>
+            </div>
+        </div>
+        <div class="mb-4 text-gray-700 text-sm">
+            Our team is available 9am–6pm, Mon–Sat.<br>
+            Click below to start a chat!
+        </div>
+        <a href="https://wa.me/918001234567?text=Hi%20Finpercent%20Team%2C%20I%20have%20a%20question%20about%20your%20services."
+            target="_blank"
+            class="w-full bg-gradient-to-r from-green-500 to-green-400 text-white py-3 rounded-xl font-semibold flex items-center justify-center hover:shadow-glow-green transition-all duration-300 btn-ripple">
+            <i class="fab fa-whatsapp mr-2"></i>
+            Start WhatsApp Chat
+        </a>
+    </div>
+</div>
 
     <!-- Counter Animation Script -->
     <script>
