@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finpercent • STOP Flywheel (Glass • Green & Beige)</title>
+  <style>
+    :root{
+      /* Palette: coherent green + beige */
+      --beige-50:#fbf8f1; --beige-100:#f4efe3; --beige-200:#ece4d1;
+      --green-700:#124036; --green-600:#1d5c4d; --green-500:#2e8b57; --green-400:#44a07b; --green-300:#8ed1b7;
+      --ink:#183a31; --muted:#5d6e68;
+      --core:var(--green-600);
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;display:flex;align-items:center;justify-content:center;min-height:100vh;
+      background: radial-gradient(1200px 1200px at 20% 10%, var(--beige-50) 0%, #f0f7f2 55%, #e8f1ea 100%);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);
+    }
+
+    .card{
+      position:relative;
+      padding:28px;
+      border-radius:24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.18));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.4),
+        0 8px 24px rgba(18,64,54,.12),
+        0 32px 68px rgba(18,64,54,.12);
+      backdrop-filter: blur(14px) saturate(120%);
+      -webkit-backdrop-filter: blur(14px) saturate(120%);
+      border:1px solid rgba(255,255,255,.45);
+    }
+
+    .chrome{
+      position:absolute;inset:-2px;pointer-events:none;border-radius:24px;
+      background: linear-gradient(135deg, rgba(255,255,255,.35), rgba(255,255,255,0));
+      mask: radial-gradient(600px 260px at 30% 0%, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 100%);
+    }
+
+    svg{width:min(78vw,620px);height:auto;display:block}
+    svg{shape-rendering:geometricPrecision}
+
+    /* Wheel styles */
+    .rim{fill:none;stroke:url(#rimGrad);stroke-width:28;stroke-linecap:round;filter:url(#softShadow)}
+    .arrow{fill:var(--core);filter:url(#softShadow)}
+    .inner{fill:none;stroke:#dcd5c6;stroke-width:10}
+    .label{font-size:18px;font-weight:700;fill:var(--ink);opacity:.48}
+
+    /* Center hub */
+    .hub{fill:var(--core);filter:url(#softShadow)}
+
+    /* Halos */
+    .halo{opacity:0}
+
+    /* Accessibility: reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      #wheel animateTransform, #tick { display:none }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="chrome"></div>
+    <svg viewBox="0 0 800 800" role="img" aria-label="STOP flywheel that spins around Savings, Taxes, Operations, Profit">
+      <defs>
+        <linearGradient id="rimGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="var(--green-600)"/>
+          <stop offset="100%" stop-color="var(--green-400)"/>
+        </linearGradient>
+        <radialGradient id="plateGrad" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="var(--beige-100)"/>
+          <stop offset="100%" stop-color="var(--beige-50)"/>
+        </radialGradient>
+        <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1a3f34" flood-opacity=".16"/>
+        </filter>
+        <filter id="haloBlur" x="-200%" y="-200%" width="400%" height="400%">
+          <feGaussianBlur stdDeviation="12"/>
+        </filter>
+      </defs>
+
+      <!-- Backplate to enhance glass look -->
+      <circle cx="400" cy="400" r="360" fill="url(#plateGrad)" opacity=".85" />
+
+      <!-- Rotating flywheel with 4 arrows -->
+      <g id="wheel">
+        <circle class="rim" cx="400" cy="400" r="220" />
+        <!-- Arrows at N/E/S/W -->
+        <g id="arrows">
+          <polygon class="arrow" points="400,160 386,194 414,194"/>
+          <polygon class="arrow" points="640,400 606,386 606,414"/>
+          <polygon class="arrow" points="400,640 386,606 414,606"/>
+          <polygon class="arrow" points="160,400 194,386 194,414"/>
+        </g>
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 400 400" to="360 400 400" dur="10s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Inner small dial: ticks and step hand -->
+      <circle class="inner" cx="400" cy="400" r="140" />
+      <line id="hand" x1="400" y1="400" x2="400" y2="260" stroke="var(--core)" stroke-width="8" stroke-linecap="round"/>
+      <animateTransform id="tick" xlink:href="#hand" attributeName="transform" attributeType="XML" type="rotate" values="0 400 400;90 400 400;180 400 400;270 400 400;360 400 400" keyTimes="0;0.25;0.5;0.75;1" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+      <circle cx="400" cy="400" r="10" class="hub"/>
+
+      <!-- Label halos that light up with the tick (uniform green) -->
+      <g>
+        <circle id="haloS" class="halo" cx="400" cy="140" r="30" fill="var(--green-500)" opacity="0" filter="url(#haloBlur)">
+          <animate attributeName="opacity" begin="tick.begin" dur="8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values=".9;0;0;0;.9"/>
+        </circle>
+        <circle id="haloT" class="halo" cx="660" cy="400" r="30" fill="var(--green-500)" opacity="0" filter="url(#haloBlur)">
+          <animate attributeName="opacity" begin="tick.begin" dur="8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values="0;.9;0;0;0"/>
+        </circle>
+        <circle id="haloO" class="halo" cx="400" cy="660" r="30" fill="var(--green-500)" opacity="0" filter="url(#haloBlur)">
+          <animate attributeName="opacity" begin="tick.begin" dur="8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values="0;0;.9;0;0"/>
+        </circle>
+        <circle id="haloP" class="halo" cx="140" cy="400" r="30" fill="var(--green-500)" opacity="0" filter="url(#haloBlur)">
+          <animate attributeName="opacity" begin="tick.begin" dur="8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values="0;0;0;.9;0"/>
+        </circle>
+      </g>
+
+      <!-- Static labels at cardinal points -->
+      <text id="labS" class="label" x="400" y="135" text-anchor="middle">Savings</text>
+      <text id="labT" class="label" x="665" y="405">Taxes</text>
+      <text id="labO" class="label" x="400" y="695" text-anchor="middle">Operations</text>
+      <text id="labP" class="label" x="135" y="405" text-anchor="end">Profit</text>
+
+      <!-- Label opacity synced to the hand tick -->
+      <animate xlink:href="#labS" attributeName="opacity" begin="tick.begin" dur="8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values="1;.48;.48;.48;1"/>
+      <animate xlink:href="#labT" attributeName="opacity" begin="tick.begin" dur="8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values=".48;1;.48;.48;.48"/>
+      <animate xlink:href="#labO" attributeName="opacity" begin="tick.begin" dur="8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values=".48;.48;1;.48;.48"/>
+      <animate xlink:href="#labP" attributeName="opacity" begin="tick.begin" dur="8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values=".48;.48;.48;1;.48"/>
+
+    </svg>
+  </div>
+</body>
+</html>
+<script>
+  // Ensure the SVG is fully loaded before applying animations
+  document.addEventListener("DOMContentLoaded", function() {
+    const wheel = document.getElementById('wheel');
+    wheel.style.transform = 'rotate(0deg)'; // Reset initial state
+  });

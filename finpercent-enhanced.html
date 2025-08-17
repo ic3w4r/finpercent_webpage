@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Finpercent - Premium Financial Solutions with Glassmorphic Design">
     <meta name="theme-color" content="#667eea">
-    <title>Finpercent - Smart Financial Solutions</title>
+    <title>finpercent - Smart Financial Solutions</title>
     
     <!-- Enhanced CDN Resources -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -297,6 +297,18 @@
                 opacity: 0;
             }
         }
+
+        @font-face {
+            font-family: 'SAEADA';
+            src: url('./LTSAEADA-BOLD.OTF') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+        .finpercent-logo-text {
+            font-family: 'SAEADA', 'Manrope', system-ui, sans-serif;
+            font-weight: bold;
+            letter-spacing: 0.02em;
+        }
     </style>
     <!-- Add Animate.css for logo animation -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -349,8 +361,8 @@
                         <a href="#home" class="flex items-center group">
                             <img src="./finpercentproperv1.png" alt="Finpercent Logo" class="w-10 h-10 mr-3" />
                             <!-- Logo Title -->
-                            <span class="text-2xl font-bold gradient-text" style="background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                Finpercent
+                            <span class="text-2xl font-bold gradient-text finpercent-logo-text" style="background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                finpercent
             </span>
                         </a>
                     </div>
@@ -360,7 +372,7 @@
                         <a href="#home" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
                            :class="activeSection === 'home' ? 'text-blue-600' : 'text-gray-700'">Home</a>
                         <a href="#about" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
-                           :class="activeSection === 'about' ? 'text-blue-600' : 'text-gray-700'">About</a>
+                           :class="activeSection === 'about' ? 'text-blue-600' : 'text-gray-700'">What its about </a>
                         <a href="#services" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
                            :class="activeSection === 'services' ? 'text-blue-600' : 'text-gray-700'">Services</a>
                         <a href="#how-it-works" class="nav-link font-medium transition-all duration-300 hover:text-blue-600" 
@@ -416,7 +428,7 @@
             </div>
             <!-- Right Content: Who is it for & Benefits -->
             <div class="w-full lg:w-1/2 flex flex-col space-y-8">
-                <!-- Who is Finpercent for: Interactive Cards -->
+                <!-- Who is finpercent for: Interactive Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
                     <div class="glass p-6 rounded-2xl flex flex-col items-center text-center hover-lift transition-all duration-300 group">
                         <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-green-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
@@ -449,7 +461,7 @@
                 </div>
                 <!-- Why Choose Finpercent: Animated Feature List -->
                 <div class="glass p-6 rounded-2xl">
-                    <h2 class="text-xl font-semibold text-green-700 mb-4 text-center">Why Choose Finpercent?</h2>
+                    <h2 class="text-xl font-semibold text-green-700 mb-4 text-center">Why Choose finpercent?</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="flex items-center space-x-3 animate-bounce-gentle">
                             <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-green-400 rounded-full flex items-center justify-center">
@@ -756,26 +768,8 @@
                                 </div>
                                 
                                 <!-- Visual -->
-                                <div class="lg:w-1/2 mt-8 lg:mt-0 lg:ml-12">
-                                    <div class="relative">
-                                        <div class="glass p-8 rounded-3xl hover-lift">
-                                            <div class="w-full h-64 rounded-2xl bg-gradient-to-br flex items-center justify-center"
-                                                 :class="`${tab.gradient}`">
-                                                <i :class="tab.icon" class="text-6xl text-white opacity-50"></i>
-                                            </div>
-                                            
-                                            <!-- Floating Elements -->
-                                            <div class="absolute -top-4 -right-4 glass p-4 rounded-2xl">
-                                                <div class="text-2xl font-bold text-blue-600">24/7</div>
-                                                <div class="text-xs text-gray-600">Support</div>
-                                            </div>
-                                            
-                                            <div class="absolute -bottom-4 -left-4 glass p-4 rounded-2xl">
-                                                <div class="text-2xl font-bold text-green-600">100%</div>
-                                                <div class="text-xs text-gray-600">Secure</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="lg:w-1/2 mt-8 lg:mt-0 lg:ml-12 flex justify-center items-center">
+                                    <!-- Placeholder or leave empty -->
                                 </div>
                             </div>
                         </div>
@@ -1463,7 +1457,7 @@
                             <a href="#" class="w-10 h-10 glass-dark rounded-xl flex items-center justify-center text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300">
                                 <i class="fab fa-youtube"></i>
                             </a>
-                        </div>
+                                               </div>
                     </div>
 
                     <!-- Quick Links -->
