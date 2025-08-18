@@ -769,7 +769,65 @@
                                 
                                 <!-- Visual -->
                                 <div class="lg:w-1/2 mt-8 lg:mt-0 lg:ml-12 flex justify-center items-center">
-                                    <!-- Placeholder or leave empty -->
+                                    <div 
+        class="w-full h-64 rounded-2xl glass transition-all duration-300 hover-lift flex items-center justify-center overflow-hidden"
+        style="box-shadow:0 8px 32px 0 rgba(31,38,135,0.18);"
+        onclick="return false;"
+        title="S.T.O.P Flywheel Animation"
+    >
+        <!-- Direct SVG embed from stop-animated-visualcard -->
+        <svg viewBox="0 0 800 800" role="img" aria-label="STOP flywheel that spins around Savings, Taxes, Operations, Profit" style="width:90%;height:90%;">
+          <defs>
+            <linearGradient id="rimGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1d5c4d"/>
+              <stop offset="100%" stop-color="#44a07b"/>
+            </linearGradient>
+            <radialGradient id="plateGrad" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#f4efe3"/>
+              <stop offset="100%" stop-color="#fbf8f1"/>
+            </radialGradient>
+            <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1a3f34" flood-opacity=".16"/>
+            </filter>
+            <filter id="haloBlur" x="-200%" y="-200%" width="400%" height="400%">
+              <feGaussianBlur stdDeviation="12"/>
+            </filter>
+          </defs>
+          <circle cx="400" cy="400" r="360" fill="url(#plateGrad)" opacity=".85" />
+          <g>
+            <circle class="rim" cx="400" cy="400" r="220" fill="none" stroke="url(#rimGrad)" stroke-width="28" stroke-linecap="round" filter="url(#softShadow)" />
+            <g>
+              <polygon fill="#22c55e" filter="url(#softShadow)" points="400,160 386,194 414,194"/>
+              <polygon fill="#22c55e" filter="url(#softShadow)" points="640,400 606,386 606,414"/>
+              <polygon fill="#22c55e" filter="url(#softShadow)" points="400,640 386,606 414,606"/>
+              <polygon fill="#22c55e" filter="url(#softShadow)" points="160,400 194,386 194,414"/>
+            </g>
+            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 400 400" to="360 400 400" dur="10s" repeatCount="indefinite"/>
+          </g>
+          <circle cx="400" cy="400" r="140" fill="#f4efe3" />
+          <line x1="400" y1="400" x2="400" y2="260" stroke="#1d5c4d" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="400" cy="400" r="10" fill="#1d5c4d" filter="url(#softShadow)"/>
+          <g>
+            <circle cx="400" cy="140" r="30" fill="#2e8b57" opacity="0" filter="url(#haloBlur)">
+              <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values=".9;0;0;0;.9" keyTimes="0;0.25;0.5;0.75;1"/>
+            </circle>
+            <circle cx="660" cy="400" r="30" fill="#2e8b57" opacity="0" filter="url(#haloBlur)">
+              <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;.9;0;0;0" keyTimes="0;0.25;0.5;0.75;1"/>
+            </circle>
+            <circle cx="400" cy="660" r="30" fill="#2e8b57" opacity="0" filter="url(#haloBlur)">
+              <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;0;.9;0;0" keyTimes="0;0.25;0.5;0.75;1"/>
+            </circle>
+            <circle cx="140" cy="400" r="30" fill="#2e8b57" opacity="0" filter="url(#haloBlur)">
+              <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;0;0;.9;0" keyTimes="0;0.25;0.5;0.75;1"/>
+            </circle>
+          </g>
+          <text x="400" y="135" text-anchor="middle" style="font-size:18px;font-weight:700;fill:#183a31;opacity:1;">Savings</text>
+          <text x="665" y="405" style="font-size:18px;font-weight:700;fill:#183a31;opacity:.48;">Taxes</text>
+          <text x="400" y="695" text-anchor="middle" style="font-size:18px;font-weight:700;fill:#183a31;opacity:.48;">Operations</text>
+          <text x="135" y="405" text-anchor="end" style="font-size:18px;font-weight:700;fill:#183a31;opacity:.48;">Profit</text>
+        </svg>
+    </div>
+</div>
                                 </div>
                             </div>
                         </div>
@@ -1169,20 +1227,6 @@
                     }
                 }" @submit.prevent="submit" class="space-y-6">
                     <div x-show="submitted" x-transition class="bg-green-100 border border-green-300 rounded-xl p-4 text-green-800 mb-4">
-                        Thank you for your interest! We'll be in touch soon.
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                        <input type="text" x-model="name" required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300" placeholder="Your Name">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                        <input type="email" x-model="email" required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300" placeholder="you@email.com">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Business Type</label>
-                        <input type="text" x-model="business" required class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300" placeholder="e.g. Retail, Manufacturing, Services">
-                    </div>
                     <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-green-400 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:shadow-glow-green transition-all duration-300 btn-ripple">
                         <span class="flex items-center justify-center">
                             <i class="fas fa-paper-plane mr-2"></i>
