@@ -1,0 +1,1210 @@
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finpercent - Smart Financial Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                        mono: ['Geist Mono', 'monospace'],
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'float-slow': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out infinite 3s',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        shimmer: {
+                            'from': { backgroundPosition: '0 0' },
+                            'to': { backgroundPosition: '-200% 0' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Premium Noise Texture */
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050F0D;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+
+        /* Glass Effects & Borders */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card-hover {
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-card-hover:hover::before {
+            left: 100%;
+        }
+
+        /* 3D Transform Utilities */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .card-float-3d {
+            transform: rotateX(10deg) rotateY(-10deg) rotateZ(2deg);
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .group:hover .card-float-3d {
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(-10px);
+        }
+
+        /* Glow Text */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(209, 248, 103, 0.3);
+        }
+    </style>
+
+    <!-- Fonts -->
+
+</head>
+
+<body
+    class="antialiased bg-[#020403] text-white overflow-x-hidden font-sans selection:bg-[#D1F867] selection:text-black">
+
+    <!-- Noise Overlay -->
+    <div class="bg-noise"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <!-- Background Gradients (Parallaxed) -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div data-speed="0.5"
+            class="parallax-bg absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] bg-[#0F2620] rounded-full blur-[120px] opacity-40 animate-blob mix-blend-screen">
+        </div>
+        <div data-speed="0.8"
+            class="parallax-bg absolute top-[20%] right-[0%] w-[40vw] h-[40vw] bg-[#1a2e29] rounded-full blur-[100px] opacity-30 animate-blob animation-delay-2000 mix-blend-screen">
+        </div>
+        <div data-speed="0.2"
+            class="parallax-bg absolute -bottom-[20%] left-[20%] w-[60vw] h-[60vw] bg-[#0c1a16] rounded-full blur-[140px] opacity-40 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto">
+            <div class="glass-panel rounded-full px-2 py-2 pl-6 flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div
+                        class="relative w-8 h-8 flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-[#D1F867] to-[#a3d132]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="w-4 h-4 text-black absolute transition-transform duration-500 group-hover:rotate-180">
+                            <line x1="19" x2="5" y1="5" y2="19"></line>
+                            <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                            <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <span
+                        class="font-bold tracking-tight text-lg text-white group-hover:text-[#D1F867] transition-colors">Finpercent</span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div
+                    class="hidden md:flex items-center gap-1 rounded-full p-1 bg-white/5 border border-white/5 backdrop-blur-md">
+                    <a href="#solutions"
+                        class="px-5 py-1.5 text-xs font-medium rounded-full transition-all text-zinc-400 hover:text-white hover:bg-white/10">Solutions</a>
+                    <a href="#strategy"
+                        class="px-5 py-1.5 text-xs font-medium rounded-full transition-all text-zinc-400 hover:text-white hover:bg-white/10">Methodology</a>
+                    <a href="#how-it-works"
+                        class="px-5 py-1.5 text-xs font-medium rounded-full transition-all text-zinc-400 hover:text-white hover:bg-white/10">Process</a>
+                </div>
+
+                <!-- Auth -->
+                <div class="flex items-center gap-3 pr-1">
+                    <a href="#"
+                        class="hidden md:block text-xs font-medium px-4 text-zinc-400 hover:text-white transition-colors">Log
+                        in</a>
+                    <a href="#"
+                        class="relative group overflow-hidden rounded-full bg-[#D1F867] px-6 py-2.5 transition-all hover:scale-105 active:scale-95">
+                        <div
+                            class="absolute inset-0 bg-white/40 group-hover:translate-x-full transition-transform duration-500 skew-x-12 -translate-x-full">
+                        </div>
+                        <span class="relative text-xs font-bold text-black uppercase tracking-wide">Get Started</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+        class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden min-h-screen flex flex-col justify-center">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+            <!-- Left: Content -->
+            <div class="lg:col-span-7 relative z-10">
+                <div id="hero-badge"
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D1F867]/5 border border-[#D1F867]/20 text-[11px] font-bold text-[#D1F867] mb-8 uppercase tracking-widest hover:bg-[#D1F867]/10 transition-colors cursor-default">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D1F867] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#D1F867]"></span>
+                    </span>
+                    Early Access for Indian SMEs
+                </div>
+
+                <h1 id="hero-title"
+                    class="text-6xl md:text-[5.5rem] font-medium tracking-tight mb-8 leading-[1] font-display text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-zinc-500">
+                    Smart finances for <br>
+                    <span class="italic font-display text-zinc-600">modern business.</span>
+                </h1>
+
+                <p id="hero-desc"
+                    class="text-lg md:text-xl max-w-lg mb-12 leading-relaxed font-light text-zinc-400 text-balance">
+                    Streamline operations, pool investments, and maximize growth with precision. The financial OS built
+                    for the next generation.
+                </p>
+
+                <div id="hero-buttons" class="flex flex-wrap items-center gap-4">
+                    <button
+                        class="h-14 px-8 rounded-full text-sm font-bold transition-all bg-white text-black hover:bg-zinc-200 shadow-[0_0_20px_rgba(255,255,255,0.1)] flex items-center gap-2 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                        Start 14-day trial
+                    </button>
+                    <button
+                        class="h-14 px-8 rounded-full border border-white/10 text-sm font-medium hover:bg-white/5 transition-all text-white flex items-center gap-3 group">
+                        <div
+                            class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor" stroke="none" class="w-3 h-3 text-white">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                        Watch Showreel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: 3D Visual -->
+            <div id="hero-visual"
+                class="lg:col-span-5 relative perspective-1000 group lg:h-[600px] flex items-center justify-center">
+                <!-- Abstract Glow Behind -->
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-[#D1F867]/20 to-transparent blur-[100px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                </div>
+
+                <!-- Main Card -->
+                <div
+                    class="relative w-full aspect-[4/5] max-w-md bg-[#0A0A0A] rounded-3xl border border-white/10 shadow-2xl overflow-hidden card-float-3d z-20">
+                    <!-- Header -->
+                    <div class="h-14 border-b border-white/5 flex items-center justify-between px-6 bg-white/[0.02]">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#28C840]"></div>
+                        </div>
+                        <div class="text-[10px] font-mono text-zinc-600 tracking-widest uppercase">Finpercent OS v2.0
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Content -->
+                    <div class="p-8 relative">
+                        <!-- Balance -->
+                        <div class="mb-10">
+                            <div class="text-xs font-medium text-zinc-500 mb-2 font-mono">TOTAL BALANCE</div>
+                            <div
+                                class="text-4xl font-medium tracking-tight font-display text-white group-hover:text-glow transition-all">
+                                ₹4,25,593</div>
+                            <div class="flex items-center gap-2 mt-3">
+                                <div
+                                    class="px-2 py-0.5 rounded bg-[#D1F867]/20 border border-[#D1F867]/30 text-[#D1F867] text-[10px] font-bold flex items-center gap-1">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                        <polyline points="17 6 23 6 23 12"></polyline>
+                                    </svg>
+                                    12.4%
+                                </div>
+                                <span class="text-[11px] text-zinc-600">vs last month</span>
+                            </div>
+                        </div>
+
+                        <!-- Graph Bars -->
+                        <div class="flex items-end justify-between h-32 gap-2 mb-10">
+                            <div
+                                class="w-full bg-zinc-800/30 rounded-sm h-[40%] hover:bg-[#D1F867]/80 hover:h-[45%] transition-all duration-300">
+                            </div>
+                            <div
+                                class="w-full bg-zinc-800/30 rounded-sm h-[60%] hover:bg-[#D1F867]/80 hover:h-[65%] transition-all duration-300">
+                            </div>
+                            <div
+                                class="w-full bg-zinc-800/30 rounded-sm h-[30%] hover:bg-[#D1F867]/80 hover:h-[35%] transition-all duration-300">
+                            </div>
+                            <div
+                                class="w-full bg-[#D1F867] rounded-sm h-[80%] shadow-[0_0_20px_rgba(209,248,103,0.3)] relative">
+                                <div
+                                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                                    ₹82k</div>
+                            </div>
+                            <div
+                                class="w-full bg-zinc-800/30 rounded-sm h-[50%] hover:bg-[#D1F867]/80 hover:h-[55%] transition-all duration-300">
+                            </div>
+                            <div
+                                class="w-full bg-zinc-800/30 rounded-sm h-[45%] hover:bg-[#D1F867]/80 hover:h-[50%] transition-all duration-300">
+                            </div>
+                        </div>
+
+                        <!-- List Items -->
+                        <div class="space-y-3">
+                            <div
+                                class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer group/item">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-[#D1F867] flex items-center justify-center text-black font-bold text-xs">
+                                        S</div>
+                                    <div>
+                                        <div class="text-xs font-semibold text-white">Streamline Ops</div>
+                                        <div class="text-[10px] text-zinc-500">Just now</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-[#D1F867] group-hover/item:translate-x-1 transition-transform">
+                                    Active</div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer group/item">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-white font-bold text-xs">
+                                        T</div>
+                                    <div>
+                                        <div class="text-xs font-semibold text-white">Tax Optimization</div>
+                                        <div class="text-[10px] text-zinc-500">2h ago</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-zinc-500 group-hover/item:text-white transition-colors">Pending
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Elements -->
+                <div class="absolute top-20 -left-12 z-30 animate-float-slow">
+                    <div
+                        class="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-2xl flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-white">Approved</div>
+                            <div class="text-[10px] text-zinc-400">Business Loan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-32 -right-8 z-30 animate-float-delayed">
+                    <div class="bg-[#1A1A1A] border border-white/10 p-4 rounded-2xl shadow-2xl w-48">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] text-zinc-500 uppercase font-bold">Efficiency</span>
+                            <span class="text-xs font-bold text-[#D1F867]">+24%</span>
+                        </div>
+                        <div class="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-[#D1F867] h-full rounded-full w-[75%] animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Social Proof -->
+    <section class="py-10 border-y border-white/5 bg-black/20 overflow-hidden relative">
+        <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#020403] to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#020403] to-transparent z-10"></div>
+
+        <div id="marquee-track"
+            class="flex gap-16 items-center w-max opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+            <!-- Duplicated logos for infinite effect -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/256px-Google_2015_logo.svg.png"
+                class="h-6 w-auto brightness-0 invert" alt="Google">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/128px-Microsoft_logo_%282012%29.svg.png"
+                class="h-6 w-auto brightness-0 invert" alt="Microsoft">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/128px-IBM_logo.svg.png"
+                class="h-6 w-auto brightness-0 invert" alt="IBM">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/128px-Tesla_Motors.svg.png"
+                class="h-4 w-auto brightness-0 invert" alt="Tesla">
+            <div class="h-6 text-xl font-bold font-display tracking-tight">ZOHO</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png"
+                class="h-6 w-auto brightness-0 invert" alt="Amazon">
+            <!-- Repeat -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/256px-Google_2015_logo.svg.png"
+                class="h-6 w-auto brightness-0 invert" alt="Google">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/128px-Microsoft_logo_%282012%29.svg.png"
+                class="h-6 w-auto brightness-0 invert" alt="Microsoft">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/128px-IBM_logo.svg.png"
+                class="h-6 w-auto brightness-0 invert" alt="IBM">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/128px-Tesla_Motors.svg.png"
+                class="h-4 w-auto brightness-0 invert" alt="Tesla">
+        </div>
+    </section>
+
+    <!-- Features Bento Grid -->
+    <section id="solutions" class="py-24 md:py-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+            <h2 class="text-4xl md:text-5xl font-medium mb-6 tracking-tight font-display text-white">Orchestrate your
+                <span class="text-zinc-500">entire financial stack.</span>
+            </h2>
+            <p class="text-zinc-400 text-lg">Integrated tools designed for the speed of modern commerce.</p>
+        </div>
+
+        <!-- Pricing Section (New) -->
+        <section id="pricing" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-5xl font-medium mb-6 font-display text-white">Transparent Pricing</h2>
+                    <div class="flex items-center justify-center gap-4 mt-8">
+                        <span class="text-zinc-400 text-sm">Monthly</span>
+                        <div class="relative inline-flex h-8 w-14 items-center rounded-full bg-zinc-800 transition-colors cursor-pointer"
+                            onclick="togglePricing()">
+                            <div id="pricing-toggle"
+                                class="inline-block h-6 w-6 transform rounded-full bg-[#D1F867] transition-transform translate-x-1">
+                            </div>
+                        </div>
+                        <span class="text-white text-sm font-bold">Yearly <span
+                                class="text-[#D1F867] text-xs ml-1">-20%</span></span>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Startup Plan -->
+                    <div
+                        class="p-8 rounded-[2rem] bg-[#0A0A0A] border border-white/10 glass-card-hover group reveal stagger-1">
+                        <h3 class="text-xl font-bold text-white mb-2">Startup</h3>
+                        <div class="flex items-baseline gap-1 my-6">
+                            <span class="text-4xl font-display text-white">₹</span>
+                            <span class="text-5xl font-display text-white pricing-amount" data-monthly="0"
+                                data-yearly="0">0</span>
+                            <span class="text-zinc-500 text-sm">/mo</span>
+                        </div>
+                        <ul class="space-y-4 mb-8 text-zinc-400 text-sm">
+                            <li class="flex gap-3"><svg class="w-5 h-5 text-[#D1F867]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg> 5 Team Members</li>
+                            <li class="flex gap-3"><svg class="w-5 h-5 text-[#D1F867]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg> Basic Analytics</li>
+                            <li class="flex gap-3"><svg class="w-5 h-5 text-[#D1F867]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg> 24/7 Support</li>
+                        </ul>
+                        <button
+                            class="w-full py-4 rounded-xl border border-white/20 hover:bg-white hover:text-black transition-all font-bold">Get
+                            Started</button>
+                    </div>
+
+                    <!-- Scaleup Plan -->
+                    <div
+                        class="p-8 rounded-[2rem] bg-[#0A0A0A] border border-[#D1F867]/30 glass-card-hover group reveal stagger-2 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 bg-[#D1F867] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl">
+                            POPULAR</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Scaleup</h3>
+                        <div class="flex items-baseline gap-1 my-6">
+                            <span class="text-4xl font-display text-white">₹</span>
+                            <span class="text-5xl font-display text-white pricing-amount" data-monthly="2999"
+                                data-yearly="2399">2,999</span>
+                            <span class="text-zinc-500 text-sm">/mo</span>
+                        </div>
+                        <ul class="space-y-4 mb-8 text-zinc-400 text-sm">
+                            <li class="flex gap-3"><svg class="w-5 h-5 text-[#D1F867]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg> Unlimited Members</li>
+                            <li class="flex gap-3"><svg class="w-5 h-5 text-[#D1F867]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg> Advanced Forecasting</li>
+                            <li class="flex gap-3"><svg class="w-5 h-5 text-[#D1F867]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg> Dedicated Manager</li>
+                        </ul>
+                        <button
+                            class="w-full py-4 rounded-xl bg-[#D1F867] text-black hover:bg-[#bce35b] transition-all font-bold shadow-[0_0_20px_rgba(209,248,103,0.3)]">Start
+                            Trial</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials (Draggable) -->
+        <section id="testimonials" class="py-24 border-y border-white/5 bg-black/40 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 mb-12">
+                <h2 class="text-3xl font-display text-white">Trusted by founders</h2>
+            </div>
+            <!-- Container for draggable items -->
+            <div id="testimonials-track" class="flex gap-6 px-6 w-max cursor-grab active:cursor-grabbing">
+                <!-- Card 1 -->
+                <div class="w-[350px] p-8 rounded-3xl bg-[#0F0F0F] border border-white/5 flex-shrink-0">
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">"Finpercent completely changed how we manage
+                        our runway. The forecasting tools are a lifesaver."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800"></div>
+                        <div>
+                            <div class="text-white text-sm font-bold">Rohan Mehta</div>
+                            <div class="text-zinc-600 text-xs">CEO, TechFlow</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="w-[350px] p-8 rounded-3xl bg-[#0F0F0F] border border-white/5 flex-shrink-0">
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">"Finally, a financial OS that understands the
+                        Indian SME context. UPI integration is flawless."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800"></div>
+                        <div>
+                            <div class="text-white text-sm font-bold">Priya Sharma</div>
+                            <div class="text-zinc-600 text-xs">Founder, DesignSpace</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="w-[350px] p-8 rounded-3xl bg-[#0F0F0F] border border-white/5 flex-shrink-0">
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">"The automated tax optimization suggestions
+                        saved us over 2 Lakhs this quarter alone."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800"></div>
+                        <div>
+                            <div class="text-white text-sm font-bold">Arjun Patel</div>
+                            <div class="text-zinc-600 text-xs">Director, AgroCorps</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="w-[350px] p-8 rounded-3xl bg-[#0F0F0F] border border-white/5 flex-shrink-0">
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">"We've consolidated 5 different tools into
+                        just Finpercent. It's streamlined our entire ops."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800"></div>
+                        <div>
+                            <div class="text-white text-sm font-bold">Sarah John</div>
+                            <div class="text-zinc-600 text-xs">CFO, RetailOne</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-display text-white text-center mb-16">Common Questions</h2>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div
+                    class="rounded-2xl bg-[#0A0A0A] border border-white/10 overflow-hidden cursor-pointer group faq-item">
+                    <div class="p-6 flex items-center justify-between" onclick="toggleFaq(this)">
+                        <span class="text-white font-medium">Is my data secure?</span>
+                        <svg class="w-5 h-5 text-zinc-500 transition-transform duration-300 faq-icon" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer px-6 bg-white/[0.02]">
+                        <p class="pb-6 text-zinc-400 text-sm leading-relaxed">Yes, we use bank-grade AES-256 encryption
+                            for all data transmission and storage. We are also ISO 27001 certified.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div
+                    class="rounded-2xl bg-[#0A0A0A] border border-white/10 overflow-hidden cursor-pointer group faq-item">
+                    <div class="p-6 flex items-center justify-between" onclick="toggleFaq(this)">
+                        <span class="text-white font-medium">Can I export my reports?</span>
+                        <svg class="w-5 h-5 text-zinc-500 transition-transform duration-300 faq-icon" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer px-6 bg-white/[0.02]">
+                        <p class="pb-6 text-zinc-400 text-sm leading-relaxed">Absolutely. All reports can be exported in
+                            PDF, Excel, and CSV formats instantly.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div
+                    class="rounded-2xl bg-[#0A0A0A] border border-white/10 overflow-hidden cursor-pointer group faq-item">
+                    <div class="p-6 flex items-center justify-between" onclick="toggleFaq(this)">
+                        <span class="text-white font-medium">Do you support multi-user access?</span>
+                        <svg class="w-5 h-5 text-zinc-500 transition-transform duration-300 faq-icon" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer px-6 bg-white/[0.02]">
+                        <p class="pb-6 text-zinc-400 text-sm leading-relaxed">Yes, the Scaleup plan allows unlimited
+                            team members with granular permission controls.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-6 gap-6 grid-rows-[auto_auto]" id="features-grid">
+
+            <!-- Large Feature Card -->
+            <div
+                class="md:col-span-4 rounded-[2rem] bg-[#0A0A0A] border border-white/10 p-10 relative overflow-hidden group glass-card-hover reveal stagger-1">
+                <div class="relative z-10 max-w-sm">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-black border border-white/10 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                        <svg class="text-[#D1F867] w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 font-display">Hyper-realtime Analytics</h3>
+                    <p class="text-zinc-500 leading-relaxed mb-8 text-sm">
+                        Process millions of data points instantly. Our engine predicts cash flow gaps before they
+                        happen.
+                    </p>
+                </div>
+
+                <!-- Abstract Graph Visualization -->
+                <div
+                    class="absolute right-0 bottom-0 w-[55%] h-[70%] border-t border-l border-white/5 bg-[#0F0F0F] rounded-tl-3xl p-6 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-700">
+                    <div class="w-full h-full relative">
+                        <!-- Grid Lines -->
+                        <div class="absolute inset-0"
+                            style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 20px 20px;">
+                        </div>
+                        <!-- Animated Line -->
+                        <svg class="absolute bottom-0 left-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                            <path d="M0,100 Q40,90 80,60 T160,50 T240,20" fill="none" stroke="#D1F867" stroke-width="2"
+                                class="drop-shadow-[0_0_10px_rgba(209,248,103,0.5)]"></path>
+                            <circle cx="240" cy="20" r="4" fill="#D1F867" class="animate-pulse"></circle>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tall Feature Card -->
+            <div
+                class="md:col-span-2 md:row-span-2 rounded-[2rem] bg-[#0A0A0A] border border-white/10 p-8 relative overflow-hidden group glass-card-hover reveal stagger-2 flex flex-col">
+                <div
+                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-black border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <svg class="text-white w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 font-display">Command Center</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-6">
+                    Centralize all your bank accounts, wallets, and credit lines in one unified interface.
+                </p>
+                <div
+                    class="mt-auto relative w-full h-48 bg-zinc-900/50 rounded-xl border border-white/5 overflow-hidden">
+                    <div class="absolute inset-x-4 top-4 space-y-3">
+                        <!-- Simulated List Items with cascading animation on hover -->
+                        <div
+                            class="h-10 w-full bg-zinc-800/80 rounded border border-white/5 flex items-center px-3 gap-3 transform translate-x-0 transition-transform group-hover:translate-x-2 duration-300">
+                            <div class="w-6 h-6 rounded-full bg-blue-500/20"></div>
+                            <div class="h-2 w-20 bg-zinc-700 rounded-full"></div>
+                        </div>
+                        <div
+                            class="h-10 w-full bg-zinc-800/80 rounded border border-white/5 flex items-center px-3 gap-3 transform translate-x-0 transition-transform group-hover:translate-x-2 delay-75 duration-300">
+                            <div class="w-6 h-6 rounded-full bg-purple-500/20"></div>
+                            <div class="h-2 w-16 bg-zinc-700 rounded-full"></div>
+                        </div>
+                        <div
+                            class="h-10 w-full bg-zinc-800/80 rounded border border-white/5 flex items-center px-3 gap-3 transform translate-x-0 transition-transform group-hover:translate-x-2 delay-150 duration-300">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20"></div>
+                            <div class="h-2 w-24 bg-zinc-700 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medium Feature Card -->
+            <div
+                class="md:col-span-2 rounded-[2rem] bg-[#0A0A0A] border border-white/10 p-8 glass-card-hover reveal stagger-3 group">
+                <div
+                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-black border border-white/10 flex items-center justify-center mb-6 group-hover:text-[#D1F867] transition-colors">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20"></path>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 font-display">Instant Transfers</h3>
+                <p class="text-zinc-500 text-sm">UPI &amp; IMPS settled in under 2 seconds.</p>
+            </div>
+
+            <!-- Medium Feature Card -->
+            <div
+                class="md:col-span-2 rounded-[2rem] bg-[#0A0A0A] border border-white/10 p-8 glass-card-hover reveal stagger-4 group">
+                <div
+                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-black border border-white/10 flex items-center justify-center mb-6 group-hover:text-[#D1F867] transition-colors">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 font-display">Bank-Grade Security</h3>
+                <p class="text-zinc-500 text-sm">AES-256 encryption &amp; biometric locks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- S.T.O.P Methodology - Reimagined -->
+    <section id="strategy" class="py-24 relative overflow-hidden">
+        <!-- Background Gradient Line -->
+        <div
+            class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#D1F867]/30 to-transparent hidden md:block">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-24 reveal">
+                <span class="text-[#D1F867] font-mono text-xs tracking-widest uppercase mb-4 block">Core
+                    Methodology</span>
+                <h2 class="text-4xl md:text-5xl font-medium font-display text-white">The S.T.O.P Protocol</h2>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Step S -->
+                <div class="flex flex-col md:flex-row items-center justify-center gap-12 group reveal stagger-1">
+                    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-[#D1F867] flex items-center justify-center text-black text-3xl font-bold font-display shadow-[0_0_40px_rgba(209,248,103,0.2)] group-hover:scale-110 transition-transform duration-500">
+                            S</div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-left">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Streamline Operations</h3>
+                        <p class="text-zinc-500 max-w-sm mx-auto md:mx-0">Identify bottlenecks in your supply chain and
+                            automate repetitive financial tasks instantly.</p>
+                    </div>
+                </div>
+
+                <!-- Step T -->
+                <div
+                    class="flex flex-col md:flex-row-reverse items-center justify-center gap-12 group reveal stagger-2">
+                    <div class="w-full md:w-1/2 flex justify-center md:justify-start">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-zinc-800 border border-white/10 flex items-center justify-center text-white text-3xl font-bold font-display group-hover:bg-zinc-700 transition-colors duration-500">
+                            T</div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-right">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Track Metrics</h3>
+                        <p class="text-zinc-500 max-w-sm mx-auto md:ml-auto md:mr-0">Real-time dashboards that give you
+                            visibility into every rupee leaving your account.</p>
+                    </div>
+                </div>
+
+                <!-- Step O -->
+                <div class="flex flex-col md:flex-row items-center justify-center gap-12 group reveal stagger-3">
+                    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-zinc-800 border border-white/10 flex items-center justify-center text-white text-3xl font-bold font-display group-hover:bg-zinc-700 transition-colors duration-500">
+                            O</div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-left">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Optimize Capital</h3>
+                        <p class="text-zinc-500 max-w-sm mx-auto md:mx-0">AI suggestions to reallocate funds to
+                            high-performing assets or reduce tax liability.</p>
+                    </div>
+                </div>
+
+                <!-- Step P -->
+                <div
+                    class="flex flex-col md:flex-row-reverse items-center justify-center gap-12 group reveal stagger-4">
+                    <div class="w-full md:w-1/2 flex justify-center md:justify-start">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-zinc-800 border border-white/10 flex items-center justify-center text-white text-3xl font-bold font-display group-hover:bg-zinc-700 transition-colors duration-500">
+                            P</div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-right">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Plan Growth</h3>
+                        <p class="text-zinc-500 max-w-sm mx-auto md:ml-auto md:mr-0">Long-term forecasting tools to help
+                            you scale from startup to enterprise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark CTA -->
+    <section class="py-20 px-6">
+        <div
+            class="max-w-5xl mx-auto bg-gradient-to-b from-[#111] to-black border border-white/10 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden reveal">
+            <!-- Glows -->
+            <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none">
+            </div>
+
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-6xl font-medium mb-8 tracking-tight font-display text-white">Ready to take
+                    control?</h2>
+                <p class="text-xl text-zinc-400 mb-10 font-light">Join the financial revolution for Indian SMEs today.
+                </p>
+
+                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto relative group">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-[#D1F867] to-white rounded-full opacity-20 blur transition duration-1000 group-hover:opacity-40 group-hover:duration-200">
+                    </div>
+                    <input type="email" placeholder="Enter your email"
+                        class="relative w-full h-14 px-6 rounded-full bg-black border border-white/20 text-white placeholder-zinc-600 focus:outline-none focus:border-[#D1F867] transition-colors">
+                    <button type="button"
+                        class="relative w-full sm:w-auto h-14 px-8 rounded-full bg-[#D1F867] hover:bg-[#bce35b] text-black font-bold transition-all shadow-[0_0_20px_rgba(209,248,103,0.2)] whitespace-nowrap">
+                        Get Started
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refined Footer -->
+    <footer class="border-t border-white/10 bg-[#020403] pt-20 pb-10 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-12 gap-10 mb-20">
+                <div class="col-span-2 md:col-span-4">
+                    <a href="#" class="flex items-center gap-2 font-bold text-xl mb-6 text-white">
+                        <div class="w-6 h-6 bg-[#D1F867] rounded-md flex items-center justify-center">
+                            <svg class="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3">
+                                <line x1="19" x2="5" y1="5" y2="19"></line>
+                                <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                                <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        Finpercent
+                    </a>
+                    <p class="text-zinc-500 text-sm max-w-xs leading-relaxed">
+                        Redefining financial management for the next generation of Indian entrepreneurs.
+                    </p>
+                </div>
+
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="font-bold text-white mb-6">Product</h4>
+                    <ul class="space-y-4 text-sm text-zinc-500">
+                        <li><a href="#" class="hover:text-[#D1F867] transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-[#D1F867] transition-colors">Integration</a></li>
+                        <li><a href="#" class="hover:text-[#D1F867] transition-colors">Enterprise</a></li>
+                        <li><a href="#" class="hover:text-[#D1F867] transition-colors">Changelog</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="font-bold text-white mb-6">Company</h4>
+                    <ul class="space-y-4 text-sm text-zinc-500">
+                        <li><a href="#" class="hover:text-[#D1F867] transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-[#D1F867] transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-[#D1F867] transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-[#D1F867] transition-colors">Legal</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-2 md:col-span-4 flex flex-col items-start md:items-end">
+                    <div class="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 w-full max-w-xs">
+                        <h4 class="font-bold text-white mb-2">Get the App</h4>
+                        <div class="flex gap-2 mt-4">
+                            <button
+                                class="flex-1 bg-black border border-white/10 rounded-lg py-2 flex items-center justify-center gap-2 hover:bg-zinc-900 transition-colors">
+                                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="flex-1 bg-black border border-white/10 rounded-lg py-2 flex items-center justify-center gap-2 hover:bg-zinc-900 transition-colors">
+                                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="flex-1 bg-black border border-white/10 rounded-lg py-2 flex items-center justify-center gap-2 hover:bg-zinc-900 transition-colors">
+                                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-zinc-600">
+                <p>© 2025 Finpercent Technologies Inc. All rights reserved.</p>
+                <div class="flex gap-8 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                    <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Register GSAP plugins
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- LENIS SMOOTH SCROLL SETUP ---
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        // Sync Lenis with GSAP ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+        // ---------------------------------
+
+        // Navbar Scroll Effect
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+
+        // HERO ANIMATIONS
+        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        // Set initial states to avoid FOUC
+        gsap.set(["#hero-badge", "#hero-title", "#hero-desc", "#hero-buttons"], { opacity: 0, y: 30 });
+        gsap.set("#hero-visual", { opacity: 0, x: 50 });
+
+        heroTl.to("#hero-badge", { y: 0, opacity: 1, duration: 0.8, delay: 0.2 })
+            .to("#hero-title", { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, "-=0.6")
+            .to("#hero-desc", { y: 0, opacity: 1, duration: 0.8 }, "-=0.6")
+            .to("#hero-buttons", { y: 0, opacity: 1, duration: 0.8 }, "-=0.6")
+            .to("#hero-visual", { x: 0, opacity: 1, duration: 1.2 }, "-=0.8");
+
+        // Hero Parallax Tilt
+        const heroVisual = document.getElementById('hero-visual');
+        if (heroVisual) {
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+                gsap.to('.card-float-3d', {
+                    rotationY: x,
+                    rotationX: -y,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        // MARQUEE ANIMATION
+        const marqueeTrack = document.getElementById("marquee-track");
+        if (marqueeTrack) {
+            const content = marqueeTrack.innerHTML;
+            marqueeTrack.innerHTML = content + content + content; // Tripling to be safe
+
+            gsap.to(marqueeTrack, {
+                xPercent: -33.33,
+                ease: "none",
+                duration: 40,
+                repeat: -1
+            });
+        }
+
+        // FEATURES GRID (Batch)
+        const featureCards = gsap.utils.toArray("#features-grid > div");
+        gsap.set(featureCards, { opacity: 0, y: 50 });
+
+        ScrollTrigger.batch(featureCards, {
+            start: "top 85%",
+            onEnter: batch => gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                stagger: 0.15,
+                duration: 0.8,
+                ease: "power3.out",
+                overwrite: true
+            })
+        });
+
+        // METHODOLOGY REVEAL
+        const stopSteps = gsap.utils.toArray("#strategy .group");
+        gsap.set(stopSteps, { opacity: 0, y: 50 });
+
+        ScrollTrigger.batch(stopSteps, {
+            start: "top 85%",
+            onEnter: batch => gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                stagger: 0.2,
+                duration: 0.8,
+                ease: "power3.out",
+                overwrite: true
+            })
+        });
+
+        // GENERAL REVEAL (Catch-all)
+        // If there are any other elements with .reveal class
+        const reveals = gsap.utils.toArray('.reveal');
+        if (reveals.length > 0) {
+            gsap.set(reveals, { opacity: 0, y: 50 }); // Higher start for more dramatic reveal
+            ScrollTrigger.batch(reveals, {
+                start: "top 90%",
+                onEnter: batch => gsap.to(batch, {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.15,
+                    duration: 1.2,
+                    ease: "power4.out" // Smoother ease
+                })
+            });
+        }
+
+        // --- NEW SCROLL LIVELINESS ---
+
+        // 1. Parallax Blooms
+        gsap.utils.toArray(".parallax-bg").forEach((layer) => {
+            const speed = layer.dataset.speed;
+            gsap.to(layer, {
+                yPercent: 50 * speed, // Move down slower than scroll
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0
+                }
+            });
+        });
+
+        // 2. Element Scrubbing (Rotate elements slightly on scroll)
+        gsap.to(".card-float-3d", {
+            rotationZ: 5,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#hero-visual",
+                start: "top center",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+
+        // --- NEW INTERACTIVE FEATURES ---
+
+        // 1. Custom Cursor
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        if (cursorDot && cursorOutline) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                // Dot follows instantly
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Outline follows with lag (GSAP)
+                gsap.to(cursorOutline, {
+                    x: posX,
+                    y: posY,
+                    duration: 0.15,
+                    ease: "power2.out",
+                    left: 0,
+                    top: 0
+                });
+            });
+
+            // Hover effects for cursor
+            const hoverables = document.querySelectorAll('a, button, .cursor-pointer');
+            hoverables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    gsap.to(cursorOutline, { scale: 1.5, borderColor: "#D1F867", duration: 0.2 });
+                    gsap.to(cursorDot, { scale: 0.5, duration: 0.2 });
+                });
+                el.addEventListener('mouseleave', () => {
+                    gsap.to(cursorOutline, { scale: 1, borderColor: "rgba(209, 248, 103, 0.5)", duration: 0.2 });
+                    gsap.to(cursorDot, { scale: 1, duration: 0.2 });
+                });
+            });
+        }
+
+        // 2. Pricing Toggle
+        let isYearly = false;
+        window.togglePricing = function () {
+            isYearly = !isYearly;
+            const toggle = document.getElementById('pricing-toggle');
+
+            // Animate Toggle Switch
+            gsap.to(toggle, { x: isYearly ? 24 : 4, duration: 0.3, ease: "power2.inOut" });
+
+            // Animate Numbers
+            const amounts = document.querySelectorAll('.pricing-amount');
+            amounts.forEach(el => {
+                const targetVal = isYearly ? el.dataset.yearly : el.dataset.monthly;
+                gsap.to(el, {
+                    innerText: targetVal,
+                    snap: { innerText: 1 }, // Snap to integers
+                    duration: 0.5,
+                    ease: "power1.out"
+                });
+            });
+        }
+
+        // 3. Testimonials Draggable (Infinite loop simulation)
+        const track = document.getElementById('testimonials-track');
+        if (track) {
+            const clone = track.innerHTML;
+            track.innerHTML += clone;
+
+            gsap.to(track, {
+                xPercent: -50,
+                ease: "none",
+                duration: 30,
+                repeat: -1
+            });
+
+            track.addEventListener('mouseenter', () => gsap.globalTimeline.pause());
+            track.addEventListener('mouseleave', () => gsap.globalTimeline.resume());
+        }
+
+        // 4. FAQ Accordion
+        // Initialize state: Close all answers and ensure overflow is hidden for animation
+        gsap.set(".faq-answer", { height: 0, overflow: "hidden" });
+
+        window.toggleFaq = function (header) {
+            const item = header.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const icon = item.querySelector('.faq-icon');
+
+            // Check if height is not 0 (meaning it's open)
+            // We use the computed style height for check
+            const isOpen = gsap.getProperty(answer, "height") > 0;
+
+            // Close all others
+            document.querySelectorAll('.faq-answer').forEach(el => {
+                if (el !== answer) gsap.to(el, { height: 0, duration: 0.4, ease: "power2.inOut" });
+            });
+            document.querySelectorAll('.faq-icon').forEach(el => {
+                if (el !== icon) gsap.to(el, { rotation: 0, duration: 0.4 });
+            });
+
+            if (isOpen) {
+                gsap.to(answer, { height: 0, duration: 0.4, ease: "power2.inOut" });
+                gsap.to(icon, { rotation: 0, duration: 0.4 });
+            } else {
+                gsap.to(answer, { height: "auto", duration: 0.4, ease: "power2.inOut" });
+                gsap.to(icon, { rotation: 180, duration: 0.4 });
+            }
+        }
+    </script>
+
+</body>
+
+</html>
